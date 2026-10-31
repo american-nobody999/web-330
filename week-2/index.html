@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+    Pragmatic JavaScript
+    Chapter 1
+    Programming Assignment
+
+    Author:Leslie Brockman
+    Date: 2026-10-31
+    Filename: index.html
+    Description: Circus character generator form/prototype
+    Additional Notes: icons will be replaced with correct asset images for each character, additional characters, features, and costume details may be added later.
+  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Grand Menagerie | Circus Character Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="mainContainer">
+      <header class="marquee">
+        <p class="eyebrow">Est. 1892 · A most extraordinary company</p>
+        <p class="stars" aria-hidden="true">★ ★ ★</p>
+        <h1>The Grand<br /><span>Menagerie</span></h1>
+        <p class="subtitle">Step right up. Your next great character awaits.</p>
+      </header>
+      <form id="characterForm">
+        <div class="section-heading"><h2>Meet the New Headliner</h2></div>
+        <div class="details">
+          <div class="field">
+            <label for="heroName">Hero Name</label>
+            <input type="text" id="heroName" name="heroName" placeholder="Your name in lights" required />
+          </div>
+          <div class="field">
+            <label for="heroGender">Hero Gender</label>
+            <select id="heroGender" name="heroGender" required>
+              <option value="" selected>Select a gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <fieldset id="characterChoices" aria-describedby="classHint">
+          <legend>Choose Your Circus Companion</legend>
+          <p id="classHint">Three remarkable performers. One starring role. Select a card.</p>
+          <div class="character-cards">
+            <label class="character-card">
+              <input type="radio" id="classWarrior" name="heroClassCard" value="warrior" />
+              <span class="card-face">
+                <span class="act-number">ACT I · THE BRAVE</span>
+                <span class="animal seal" aria-hidden="true">🦭</span>
+                <strong>Seal the Warrior</strong>
+                <span>A stout heart. A fearless flipper.</span>
+                <span class="selection">Choose warrior</span>
+              </span>
+            </label>
+            <label class="character-card">
+              <input type="radio" id="classMage" name="heroClassCard" value="mage" />
+              <span class="card-face">
+                <span class="act-number">ACT II · THE WONDROUS</span>
+                <span class="animal elephant" aria-hidden="true">🐘</span>
+                <strong>Mage the Elephant</strong>
+                <span>A little magic. A mighty imagination.</span>
+                <span class="selection">Choose mage</span>
+              </span>
+            </label>
+            <label class="character-card">
+              <input type="radio" id="classRogue" name="heroClassCard" value="rogue" />
+              <span class="card-face">
+                <span class="act-number">ACT III · THE CUNNING</span>
+                <span class="animal lion" aria-hidden="true">🦁</span>
+                <strong>Rogue Lion</strong>
+                <span>A velvet paw. A daring escape.</span>
+                <span class="selection">Choose rogue</span>
+              </span>
+            </label>
+          </div>
+          <div class="field class-select">
+            <label for="heroClass">Character class (or choose a card above)</label>
+            <select id="heroClass" name="heroClass" required>
+              <option value="">Select a character class</option>
+              <option value="warrior">Warrior</option>
+              <option value="mage">Mage</option>
+              <option value="rogue">Rogue</option>
+            </select>
+          </div>
+        </fieldset>
+        <p id="validationMessage" class="validation" role="alert"></p>
+        <button id="generateHero" type="submit">Admit one extraordinary hero <span aria-hidden="true">→</span></button>
+        <p class="form-note">All fields required. A world of wonder included.</p>
+      </form>
+      <section id="characterTicket" class="ticket" aria-live="polite" aria-atomic="true" aria-labelledby="ticketHeading">
+        <div class="ticket-stub" aria-hidden="true">ADMIT ONE<br />★<br />GRAND MENAGERIE</div>
+        <div class="ticket-body">
+          <p class="eyebrow">Your place in the spotlight</p>
+          <h2 id="ticketHeading">A star is waiting in the wings</h2>
+          <p id="ticketHint">Complete your details above to reveal your circus character.</p>
+          <p id="characterOutput" class="assignment-output"></p>
+          <dl id="ticketDetails" hidden>
+            <div><dt>Name</dt><dd id="outputName"></dd></div>
+            <div><dt>Gender</dt><dd id="outputGender"></dd></div>
+            <div><dt>Class</dt><dd id="outputClass"></dd></div>
+            <div><dt>Circus identity</dt><dd id="outputIdentity"></dd></div>
+          </dl>
+        </div>
+      </section>
+      <footer>The extraordinary starts with you. <span aria-hidden="true">✦</span></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
