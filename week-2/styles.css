@@ -1,0 +1,184 @@
+/*
+  Pragmatic JavaScript
+  Chapter 1
+  Programming Assignment
+
+  Author:Leslie Brockman
+  Date: 2026-10-31
+  Filename: styles.css
+  Description: Stylesheet for the circus character generator, defining layout, typography, and visual design for the form and character cards.
+*/
+
+:root {
+  color-scheme: light;
+  --red: #781e28;
+  --red-dark: #50131b;
+  --gold: #ac7c2d;
+  --cream: #fff8e9;
+  --ink: #39271e;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: repeating-linear-gradient(90deg, #eadbc0 0 48px, #f2e6d1 48px 96px);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.5;
+}
+
+#mainContainer {
+  width: min(1080px, calc(100% - 32px));
+  margin: 32px auto;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  box-shadow: 0 18px 55px #39271e26;
+  overflow: hidden;
+}
+
+.marquee {
+  text-align: center;
+  padding: 32px 24px 38px;
+  color: var(--cream);
+  background: radial-gradient(ellipse at top, #a43b3e, var(--red-dark));
+  border-bottom: 7px double #d8b467;
+  outline: 1px dashed #d8b467;
+  outline-offset: -12px;
+}
+
+.eyebrow, .act-number, .selection, .ticket-stub, footer, .form-note {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.eyebrow { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; }
+
+.stars { color: #ebc777; letter-spacing: .6em; margin: 16px 0 8px; }
+
+h1 { font-size: clamp(2.7rem, 7vw, 5rem); line-height: 1.05; margin: 0; text-transform: uppercase; letter-spacing: .03em; text-shadow: 2px 3px var(--red-dark); }
+
+h1 span { color: #f0ce88; }
+
+.subtitle { margin-bottom: 0; font-style: italic; }
+
+form { padding: 30px 36px 20px; }
+
+.section-heading { display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+
+h2 { font-size: 1.4rem; margin: 0; }
+
+.details { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.field label { display: block; font-weight: bold; margin-bottom: 7px; }
+
+input[type="text"], select {
+  width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #9d8865;
+  border-radius: 7px; color: var(--ink); background: #fffdf7; font: inherit;
+}
+
+.class-select { max-width: 360px; margin: 22px auto 0; }
+
+fieldset { margin: 28px 0 0; padding: 0; border: 0; min-width: 0; }
+
+legend { width: 100%; text-align: center; font-size: 1.4rem; font-weight: bold; color: var(--red); }
+
+#classHint { margin: 6px 0 18px; color: #6b5645; text-align: center; }
+.character-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.character-card { position: relative; cursor: pointer; min-width: 0; }
+
+/* Keep card radios visible and keyboard focusable. */
+.character-card input { position: absolute; left: 14px; top: 14px; width: 18px; height: 18px; margin: 0; accent-color: var(--red); }
+
+.card-face {
+  display: flex; height: 100%; flex-direction: column; align-items: center; text-align: center;
+  padding: 42px 14px 20px; border: 2px solid #c9b58c; border-radius: 14px;
+  background: linear-gradient(#fffdf5, #f3e7cb); box-shadow: 0 4px 0 #dac7a3;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.act-number { font-size: .65rem; letter-spacing: .1em; color: #725022; }
+
+.animal { display: grid; place-items: center; width: 112px; height: 112px; margin: 16px 0; border-radius: 50%; font-size: 4.3rem; border: 1px dashed #ad863d; background: #e8d8b0; }
+
+.elephant { background: #dce0d4; }
+
+.lion { background: #efd398; }
+
+.card-face strong { color: var(--red); font-size: 1.2rem; }
+
+.card-face > span:not([class]) { font-size: .85rem; margin: 8px 0 16px; }
+
+.selection { margin-top: auto; color: var(--red); font-size: .75rem; font-weight: bold; border-top: 1px solid #c9b58c; padding-top: 12px; width: 100%; }
+
+.character-card:hover .card-face { transform: translateY(-3px); border-color: var(--red); }
+
+.character-card input:checked + .card-face { border-color: var(--red); box-shadow: 0 0 0 2px var(--red), 0 6px 0 #dac7a3; background: #f9e8cd; }
+
+.character-card input:checked + .card-face .selection::before { content: "✓ Selected · "; }
+
+:focus-visible { outline: 3px solid #155b78; outline-offset: 4px; }
+
+.character-card input:focus-visible + .card-face { outline: 3px solid #155b78; outline-offset: 5px; }
+
+.validation { color: #921e29; font-weight: bold; margin: 22px 0 12px; }
+
+.validation:empty { margin-top: 26px; }
+button { display: block; width: 100%; padding: 17px 22px; border: 2px solid var(--red-dark); border-radius: 8px; background: var(--red); color: var(--cream); font: bold 1rem "Trebuchet MS", Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 0 var(--red-dark); }
+
+button:hover { background: #942c38; }
+
+button span { margin-left: 12px; }
+
+.form-note { text-align: center; font-size: .75rem; color: #6b5645; margin: 14px 0 0; }
+
+.ticket { display: grid; grid-template-columns: 150px 1fr; margin: 16px 36px 30px; border: 2px solid var(--gold); border-radius: 12px; background: #f4e7c6; box-shadow: 0 5px 12px #39271e12; }
+
+.ticket-stub { display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 20px 12px; border-right: 2px dashed var(--gold); color: var(--red); font-size: .8rem; font-weight: bold; letter-spacing: .12em; }
+
+.ticket-body { padding: 22px 26px; min-width: 0; overflow-wrap: anywhere; }
+
+.ticket-body .eyebrow { margin-top: 0; color: #73501e; }
+
+.ticket-body h2 { color: var(--red); }
+
+#ticketHint { margin-bottom: 0; }
+
+dl { margin-bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+[hidden] { display: none !important; }
+
+dt { text-transform: uppercase; letter-spacing: .08em; font: .7rem "Trebuchet MS", Arial, sans-serif; color: #725022; }
+
+dd { margin: 3px 0 0; font-weight: bold; }
+
+footer { text-align: center; border-top: 1px solid #d6c49f; padding: 18px; font-size: .75rem; color: #6b5645; }
+
+footer span { margin-left: 12px; color: var(--red); }
+
+/* One media query for small screens is enough for now */
+@media (max-width: 700px) {
+  #mainContainer { margin: 16px auto; }
+  form { padding: 24px 20px 16px; }
+  .details, .character-cards { grid-template-columns: 1fr; }
+  .card-face { padding-top: 24px; }
+  .animal { margin: 12px 0; }
+  .ticket { margin: 16px 20px 24px; grid-template-columns: 1fr; }
+  .ticket-stub { border-right: 0; border-bottom: 2px dashed var(--gold); padding: 12px; }
+  dl { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Keep the assignment summary readable to assistive technology without duplicating the ticket visually. */
+.assignment-output {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
