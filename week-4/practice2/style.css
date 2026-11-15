@@ -1,0 +1,326 @@
+/* WEB 330 Practice: Palestine Crossword
+   CSS Styles */
+
+:root {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #304456;
+    background: #fff8e9;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #fff3cf, #e5f5e9);
+}
+.game {
+    overflow-wrap: anywhere;
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px;
+}
+.hero {
+    text-align: center;
+    padding: 25px 10px;
+}
+.eyebrow {
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: .15em;
+    color: #37866a;
+}
+.decorations {
+    font-size: 2rem;
+    margin: 12px 0;
+}
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    color: #d85c58;
+    margin: 8px 0;
+    text-shadow: 2px 3px #ffe0a1;
+}
+.hero h2 {
+    color: #32836e;
+    font-size: 1.4rem;
+}
+.hero p {
+    margin: 7px;
+}
+[lang="ar"] {
+    font-family: Tahoma, Arial, sans-serif;
+}
+.instructions, .puzzle-panel, .clue-panel {
+    background: #fffdf7;
+    border: 3px solid #e5ddc9;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 6px 0 #e6ddc6;
+}
+.instructions {
+    margin-bottom: 22px;
+    text-align: center;
+}
+.instructions h2 {
+    color: #32836e;
+    font-size: 1.25rem;
+}
+.instructions h2 span {
+    color: #966ca2;
+    font-size: .9rem;
+    margin-left: 10px;
+}
+.instructions p {
+    margin: 8px 0;
+}
+.game-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+.puzzle-panel, .clue-panel {
+    min-width: 0;
+}
+.puzzle-panel h2, .clue-panel h2 {
+    color: #32836e;
+    font-size: 1.25rem;
+    margin: 0 0 18px;
+}
+.puzzle-panel h2 span, .clue-panel h2 span {
+    float: right;
+    color: #9568a2;
+    font-size: .9rem;
+}
+.notebook {
+    background: repeating-linear-gradient(0deg, #fffef8 0 29px, #dfeaf0 30px 31px);
+    border: 2px solid #d6e5e9;
+    border-radius: 16px;
+    padding: 20px;
+}
+.crossword-grid {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-template-rows: repeat(9, minmax(0, 1fr));
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1;
+    margin: auto;
+    background: #4e6873;
+    border: 2px solid #4e6873;
+    gap: 2px;
+}
+.cell {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    background: #fffdf5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cell.blocked {
+    background: #526b73;
+}
+.cell-number {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    font-size: .55rem;
+    color: #6d7d85;
+    font-weight: bold;
+    pointer-events: none;
+}
+.cell input {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    text-align: center;
+    font-size: clamp(.8rem, 2vw, 1.4rem);
+    font-weight: bold;
+    color: #304456;
+    text-transform: uppercase;
+    padding: 0;
+}
+.cell.active {
+    background: #ffe6a4;
+}
+.cell.selected, .cell:focus-within {
+    background: #a8e2ce;
+}
+.cell.error {
+    background: #ffc9c9;
+}
+.cell.correct {
+    background: #d6f2d8;
+}
+.cell.correct.active {
+    box-shadow: inset 0 0 0 2px #e5bd59;
+}
+.cell.correct.selected, .cell.correct:focus-within {
+    background: #a8e2ce;
+}
+.message {
+    text-align: center;
+    color: #32836e;
+    font-weight: bold;
+    min-height: 25px;
+    margin: 18px 0 0;
+}
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:focus-visible {
+    outline: 3px solid #327dc1;
+    outline-offset: 3px;
+}
+#checkBtn, .check-button {
+    background: #ffce74;
+    color: #62491f;
+    box-shadow: 0 4px 0 #d6a14c;
+}
+#solutionBtn, .solution-button {
+    background: #a8ddec;
+    color: #31596d;
+    box-shadow: 0 4px 0 #76b1c5;
+}
+#resetBtn, .reset-button {
+    background: #f3b9ca;
+    color: #783e55;
+    box-shadow: 0 4px 0 #d88da7;
+}
+.clue-section {
+    margin-top: 20px;
+}
+.clue-section h3 {
+    background: #f8d78b;
+    color: #745123;
+    padding: 12px;
+    border-radius: 12px;
+}
+.clue-section h3 span {
+    float: right;
+    font-size: .85rem;
+}
+.clue-section:nth-of-type(2) h3 {
+    background: #bce6d5;
+    color: #326b5a;
+}
+.clue-list {
+    display: grid;
+    gap: 8px;
+}
+.clue {
+    background: #f9f4e9;
+    border: 2px solid #e6dac8;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+}
+.clue:hover {
+    background: #fff0c4;
+}
+.clue.active {
+    background: #d5f0e3;
+    border-color: #65ad91;
+}
+.clue-number {
+    font-weight: bold;
+    color: #c05c55;
+    margin-right: 8px;
+}
+.fun-fact {
+    background: #e9e0f4;
+    padding: 17px;
+    border-radius: 16px;
+    margin-top: 24px;
+}
+.fun-fact h3 {
+    color: #795a90;
+    margin: 0 0 8px;
+}
+.fun-fact p {
+    line-height: 1.6;
+    font-size: .9rem;
+}
+footer {
+    text-align: center;
+    color: #7d837e;
+    font-size: .8rem;
+    margin-top: 30px;
+}
+footer p {
+    margin: 5px;
+}
+@media (max-width: 850px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 520px) {
+    .game {
+        padding: 10px;
+    }
+    .instructions, .puzzle-panel, .clue-panel {
+        padding: 14px;
+    }
+    .notebook {
+        padding: 10px;
+    }
+    .crossword-grid {
+        gap: 1px;
+    }
+    .cell-number {
+        font-size: .45rem;
+        top: 1px;
+        left: 2px;
+    }
+    .cell input {
+        font-size: clamp(.7rem, 4vw, 1.1rem);
+    }
+    .buttons {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .game {
+        padding: 6px;
+    }
+    .instructions, .puzzle-panel, .clue-panel {
+        padding: 8px;
+    }
+    .notebook {
+        padding: 6px;
+    }
+}
+
+/* Keep physical grid columns left-to-right; Arabic word data supplies RTL positions. */
+.game-layout + .game-layout { margin-top: 32px; }
+.crossword-grid { direction: ltr; }
+.clue { text-align: start; }
+[lang="ar"] .cell-number { left: auto; right: 2px; }
+[lang="ar"] .cell input { direction: rtl; text-align: center; }
+.cell.error, .cell.error:focus-within { background: #ffc9c9; }
+.clue[aria-pressed="true"] { border-color: #65ad91; }
