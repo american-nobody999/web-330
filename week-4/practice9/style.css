@@ -1,0 +1,45 @@
+/* Practice 9 — Little Number Sliding Puzzle
+Template basic--prjoect styles pending on needs, and a few tweaks needed before integration*/
+:root { font-family: "Trebuchet MS", Arial, sans-serif; color: #294958; background: #f9f1df; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 20px 12px; }
+.number-game { max-width: 540px; margin: auto; padding: 24px; border: 3px solid #e2d4ac; border-radius: 26px; background: #fffdf5; text-align: center; box-shadow: 0 6px 0 #eadfc5; }
+h1 { color: #36786e; font-size: clamp(1.7rem, 6vw, 2.3rem); line-height: 1.15; }
+p { line-height: 1.5; }
+.eyebrow { color: #716044; font-size: .8rem; font-weight: bold; }
+.moves { margin: 16px 0 10px; font-weight: bold; }
+.puzzle-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 360px; padding: 12px; margin: auto; border-radius: 20px; background: #e5eee8; border: 2px solid #b1cbbd; }
+.tile, .empty-space { aspect-ratio: 1; min-width: 0; display: grid; place-items: center; border-radius: 14px; }
+.tile { border: 2px solid #aa7f36; background: #ffe1a0; color: #324657; font: bold clamp(1.8rem, 9vw, 3rem) "Trebuchet MS", Arial, sans-serif; cursor: pointer; box-shadow: 0 3px 0 #d3b879; touch-action: manipulation; }
+.tile[data-number="2"], .tile[data-number="5"], .tile[data-number="8"] { background: #bfe1ef; border-color: #739cae; box-shadow: 0 3px 0 #a0c2d1; }
+.tile[data-number="3"], .tile[data-number="6"] { background: #f6cabd; border-color: #b68376; box-shadow: 0 3px 0 #d6aa9d; }
+.empty-space { border: 2px dashed #819e91; background: #f3f6ee; color: #526e61; font-size: .8rem; }
+.puzzle-message { min-height: 48px; margin: 18px 0 8px; color: #326d56; font-weight: bold; }
+.shuffle-button { min-height: 48px; padding: 12px 24px; border: 2px solid #397b6e; border-radius: 14px; background: #b6e1c9; color: #294c40; font: bold 1rem "Trebuchet MS", Arial, sans-serif; cursor: pointer; touch-action: manipulation; box-shadow: 0 3px 0 #91bba6; }
+button:focus-visible { outline: 4px solid #245c9a; outline-offset: 3px; }
+.goal, footer { color: #66725f; font-size: .78rem; }
+footer { margin-top: 24px; }
+@media (max-width: 360px) {
+    .number-game { padding: 16px 12px; }
+    .puzzle-board { gap: 7px; padding: 8px; }
+}
+
+/* Independent number-line activity; reading order stays left to right when wrapped. */
+.number-line-game { margin-top: 30px; padding-top: 20px; border-top: 3px dashed #cabb91; }
+.number-line-game h2 { color: #36786e; font-size: 1.6rem; }
+.number-line-game h3 { font-size: 1rem; }
+.line-help { font-size: .85rem; color: #52675c; }
+.number-line { display: grid; grid-template-columns: repeat(9, minmax(44px, 1fr)); gap: 6px; padding: 8px 0; margin: 16px 0; list-style: none; direction: ltr; }
+.number-line li { min-width: 0; }
+.line-slot, .number-block { width: 100%; min-width: 44px; min-height: 60px; border: 2px solid #809f90; border-radius: 12px; color: #294958; background: #f1f5e9; font: bold 1.6rem "Trebuchet MS", Arial, sans-serif; cursor: pointer; touch-action: manipulation; }
+.line-slot.is-empty { border-style: dashed; font-size: .65rem; padding: 3px; }
+.number-tray { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; min-height: 80px; padding: 12px; border: 2px solid #b1cbbd; border-radius: 16px; background: #e5eee8; }
+.number-block { width: 60px; }
+.number-block, .line-slot:not(.is-empty) { background: #ffe1a0; border-color: #aa7f36; box-shadow: 0 3px 0 #d3b879; }
+.number-block:nth-child(3n + 2) { background: #bfe1ef; }
+.number-block:nth-child(3n) { background: #f6cabd; }
+.number-block[aria-pressed="true"] { border: 3px solid #245c9a; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #245c9a; text-decoration: underline; text-underline-offset: 4px; }
+.number-tray p { margin: auto; font-size: .85rem; }
+@media (max-width: 540px) {
+    .number-line { grid-template-columns: repeat(3, minmax(44px, 1fr)); gap: 10px; }
+}
