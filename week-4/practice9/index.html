@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Play With Numbers!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="number-game">
+        <header>
+            <p class="eyebrow">MPGA Schoolhouse · ABC 123</p>
+            <h1>Let's Play With Numbers!</h1>
+            <p id="puzzleInstructions">Tap a number next to the empty space. Put the numbers in order!</p>
+        </header>
+        <section aria-label="Number sliding puzzle">
+            <p class="moves">Moves: <strong id="puzzleMoves">0</strong></p>
+            <div id="puzzleBoard" class="puzzle-board" role="group" aria-label="Three by three number puzzle" aria-describedby="puzzleInstructions"></div>
+            <p id="puzzleMessage" class="puzzle-message" role="status">Ready to put the numbers in order?</p>
+            <button type="button" id="puzzleShuffle" class="shuffle-button">Mix It Up!</button>
+            <p class="goal">Goal: 1, 2, 3 / 4, 5, 6 / 7, 8, empty.</p>
+        </section>
+        <section class="number-line-game" aria-labelledby="numberLineTitle">
+            <h2 id="numberLineTitle">Build My Number Line!</h2>
+            <p id="numberLineInstructions">Pick a number and put it in order from 1 to 9!</p>
+            <p class="line-help">Drag a block, or select a tray number and then an empty space. Select a placed number to return it to the tray.</p>
+            <ol id="numberLine" class="number-line" aria-label="Number positions, in order" aria-describedby="numberLineInstructions"></ol>
+            <h3>Your Number Blocks</h3>
+            <div id="numberTray" class="number-tray" role="group" aria-label="Available number blocks"></div>
+            <p id="numberLineMessage" class="puzzle-message" role="status">Pick a number to begin.</p>
+            <button type="button" id="numberLineReset" class="shuffle-button">Start Over</button>
+        </section>
+        <footer>WEB 330 · Week 4 · Practice 9</footer>
+    </main>
+</body>
+</html>
