@@ -1,0 +1,110 @@
+<!-- Practice 4: The Cosmic Oracle
+     Author: Leslie Brockman
+     Description: A cosmic fortune-telling arcade machine simulation. This is my merge dragons. My candy crush. Don't judge. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 4 | The Cosmic Oracle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="arcade">
+        <header class="page-header">
+            <p class="eyebrow">JavaScript Practice 4</p>
+            <h1>Welcome to the Cosmic Arcade</h1>
+            <p>Step right up. The universe has something to say.</p>
+        </header>
+
+        <section class="machine" aria-labelledby="machineTitle">
+            <div class="machine-top">
+                <span class="marquee-stars" aria-hidden="true">✦ ✧ ✦</span>
+                <p class="machine-label">The Boardwalk Arcade Presents</p>
+                <h2 id="machineTitle">The Cosmic Oracle</h2>
+                <p class="machine-slogan">THE UNIVERSE HAS OPINIONS</p>
+                <span class="marquee-stars" aria-hidden="true">✦ ✧ ✦</span>
+            </div>
+
+            <div class="machine-body">
+                <div class="celestial-window">
+                    <div class="star star-one" aria-hidden="true">✦</div>
+                    <div class="star star-two" aria-hidden="true">✧</div>
+                    <div class="star star-three" aria-hidden="true">✦</div>
+                    <div class="star star-four" aria-hidden="true">✧</div>
+
+                    <div class="moon" aria-hidden="true">☾</div>
+                    <div class="planet planet-one" aria-hidden="true">🪐</div>
+                    <div class="planet planet-two" aria-hidden="true">✺</div>
+                    <div class="planet planet-three" aria-hidden="true">✧</div>
+
+                    <p class="window-message" id="windowMessage">
+                        The stars are waiting...
+                    </p>
+                </div>
+
+                <div class="machine-instructions">
+                    <p>✦ CONSULT THE COSMOS ✦</p>
+                    <p>One mysterious message. Absolutely no guarantees.</p>
+                </div>
+
+                <div class="machine-controls">
+                    <button type="button" id="revealBtn" class="reveal-btn">
+                        ✦ Reveal My Fortune ✦
+                    </button>
+                    <button type="button" id="newFortuneBtn" class="new-btn">
+                        ↻ Another Fortune
+                    </button>
+                </div>
+
+                <div class="ticket-slot">
+                    <p>FORTUNES DISPENSED HERE</p>
+                    <div class="slot-opening" aria-hidden="true"></div>
+                </div>
+
+                <div class="ticket-area" id="ticketArea" aria-live="polite">
+                    <article class="fortune-ticket" id="fortuneTicket" hidden>
+                        <div class="ticket-heading">
+                            <span>✦ COSMIC MESSAGE ✦</span>
+                            <span id="ticketNumber">NO. 001</span>
+                        </div>
+
+                        <div class="ticket-symbol" id="ticketSymbol" aria-hidden="true">
+                            🌙
+                        </div>
+
+                        <h3 id="fortuneTitle">Your Fortune Awaits</h3>
+
+                        <p class="fortune-text" id="fortuneText">
+                            The universe is preparing your message.
+                        </p>
+
+                        <p class="fortune-omen" id="fortuneOmen"></p>
+
+                        <div class="ticket-footer">
+                            <span>THE COSMIC ORACLE</span>
+                            <span>✦ ✧ ✦</span>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="machine-status" id="machineStatus" role="status">
+                    No coins required. No destiny guaranteed.
+                </p>
+            </div>
+
+            <div class="machine-base">
+                <span>✦</span>
+                <p>EST. SOMEWHERE IN THE UNIVERSE</p>
+                <span>✦</span>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>For entertainment and laughter only. The planets deny responsibility.</p>
+            <p>Made with stardust, sarcasm, and JavaScript. ✨</p>
+        </footer>
+    </main>
+</body>
+</html>
