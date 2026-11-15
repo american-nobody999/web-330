@@ -1,0 +1,324 @@
+/* Practice 8: Clown Says! with the DJ */
+/* Author: Leslie Brockman */
+
+/* WEB 330 | Week 4 | Practice 8 | Clown Says */
+:root {
+    --red: #a92239;
+    --dark-red: #681b2d;
+    --gold: #f4c85c;
+    --cream: #fff3d8;
+    --navy: #19243b;
+    --green: #287e62;
+    --pink: #ffb4c3;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: repeating-linear-gradient(90deg, #871e33 0 85px, #b72c43 85px 170px);
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+}
+button {
+    font: inherit;
+    cursor: pointer;
+}
+.circus {
+    width: min(100% - 20px, 850px);
+    margin: 25px auto;
+    padding: 16px;
+    border: 7px solid var(--gold);
+    border-radius: 26px;
+    background: var(--cream);
+    box-shadow: 0 15px 40px #230b1a99;
+}
+.circus-header {
+    padding: 26px 15px;
+    border-radius: 18px;
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+}
+.eyebrow {
+    color: var(--gold);
+    font: bold 0.75rem Arial, sans-serif;
+    letter-spacing: 2px;
+}
+h1 {
+    margin: 10px 0;
+    color: var(--gold);
+    font-size: clamp(2.3rem, 6vw, 4rem);
+    text-shadow: 3px 3px var(--dark-red);
+}
+.subtitle {
+    color: var(--pink);
+    font-size: 1.2rem;
+}
+.game {
+    padding: 20px 10px;
+    text-align: center;
+}
+.game-intro h2 {
+    color: var(--dark-red);
+}
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 450px;
+    margin: 20px auto;
+}
+.score {
+    padding: 14px;
+    border: 3px solid var(--gold);
+    border-radius: 14px;
+    background: var(--navy);
+    color: var(--cream);
+}
+.score span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--gold);
+    font: bold 0.8rem Arial, sans-serif;
+    text-transform: uppercase;
+}
+.score strong {
+    font-size: 1.7rem;
+}
+.clown-stage {
+    max-width: 580px;
+    margin: 20px auto;
+    padding: 24px 18px;
+    border: 6px double var(--gold);
+    border-radius: 20px;
+    background: radial-gradient(circle at center, #3c4c70, var(--navy));
+}
+.clown-face {
+    font-size: clamp(5rem, 12vw, 8rem);
+    transition: transform 0.25s;
+}
+.clown-face.is-happy {
+    transform: rotate(-12deg) scale(1.1);
+}
+.clown-face.is-tricky {
+    transform: rotate(12deg) scale(1.08);
+}
+.speech-bubble {
+    max-width: 420px;
+    margin: 15px auto;
+    padding: 16px;
+    border: 4px solid var(--gold);
+    border-radius: 18px;
+    background: var(--cream);
+}
+.speech-bubble p {
+    margin: 0;
+    color: var(--dark-red);
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    font-weight: bold;
+}
+.timer-track {
+    overflow: hidden;
+    height: 14px;
+    margin-top: 20px;
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    background: var(--dark-red);
+}
+.timer-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--green);
+    transition: width 0.1s linear;
+}
+.game-message {
+    min-height: 28px;
+    color: var(--dark-red);
+    font-weight: bold;
+}
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 650px;
+    margin: 20px auto;
+}
+.action-buttons button {
+    min-height: 75px;
+    padding: 12px 5px;
+    border: 3px solid var(--navy);
+    border-radius: 14px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: bold;
+    box-shadow: 0 5px 0 var(--dark-red);
+}
+.action-buttons button:hover {
+    transform: translateY(-3px);
+}
+.game-controls {
+    margin: 25px auto;
+}
+.game-controls button,
+.victory button {
+    padding: 13px 24px;
+    border: 3px solid var(--navy);
+    border-radius: 12px;
+    background: var(--green);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 0 var(--dark-red);
+}
+.instructions {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 18px;
+    border: 3px dashed var(--gold);
+    border-radius: 14px;
+    background: #fff9eb;
+}
+.instructions h3 {
+    margin-top: 0;
+    color: var(--dark-red);
+}
+.victory {
+    max-width: 580px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 5px double var(--gold);
+    border-radius: 18px;
+    background: var(--green);
+    color: white;
+}
+.victory[hidden] {
+    display: none;
+}
+button:focus-visible {
+    outline: 4px solid #67d7f4;
+    outline-offset: 4px;
+}
+footer {
+    padding: 15px;
+    border-top: 4px double var(--gold);
+    text-align: center;
+    font-size: 0.85rem;
+}
+@media (max-width: 600px) {
+    .circus {
+        width: calc(100% - 10px);
+        margin: 5px auto;
+        padding: 7px;
+        border-width: 4px;
+    }
+    .game {
+        padding: 12px 4px;
+    }
+    .action-buttons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .clown-stage {
+        padding: 18px 10px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Compact circus-ticket progression. */
+.level-section[hidden] { display: none; }
+.level-tickets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 4px; }
+.level-ticket { min-width: 0; min-height: 74px; padding: 10px; border: 2px dashed var(--dark-red); border-radius: 8px; background: #ffe7a5; color: var(--navy); font-size: .85rem; font-weight: bold; overflow-wrap: anywhere; }
+.ticket-status { display: block; margin-top: 6px; font: bold .7rem Arial, sans-serif; }
+.level-ticket:disabled { cursor: not-allowed; color: #655f61; background: #e5dfd4; border-color: #84777b; }
+.level-ticket.is-completed { background: #d6f0df; border-color: var(--green); }
+.studio-ticket { background: #e9ddf3; border-color: #77518b; }
+.level-ticket[aria-current="step"] { border-style: solid; box-shadow: inset 0 0 0 2px var(--gold), 0 3px 0 var(--dark-red); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+    .level-tickets { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+}
+
+/* Level 2 visual memory stage: slow, separated cues rather than rapid flashes. */
+.routine-stage { max-width: 580px; margin: 16px auto; padding: 16px; border: 5px double var(--gold); border-radius: 18px; background: var(--navy); color: var(--cream); }
+#routineMode { margin: 0; color: var(--gold); font-weight: bold; }
+.routine-move { display: grid; place-items: center; min-height: 125px; margin: 10px 0; padding: 12px; border: 3px solid transparent; border-radius: 14px; font-size: clamp(1.8rem, 6vw, 3rem); transition: background-color .2s ease; }
+.routine-move.is-demonstrating { background: #405173; border-color: var(--gold); }
+#routineActions button:disabled { opacity: .55; cursor: default; transform: none; }
+#routineRetry:disabled { opacity: .6; cursor: default; }
+#level2 .game-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+#level2 .game-controls button, #continueLevel2, #continueLevel3 { min-height: 44px; }
+@media (prefers-reduced-motion: reduce) {
+    .routine-move { transition: none; }
+}
+
+/* Level 3: gentle DJ-booth lighting, without dance-floor or disco effects. */
+.dj-stage { background: linear-gradient(135deg, #243451, #4c345c); border-color: var(--pink); }
+.dj-booth { max-width: 250px; margin: 0 auto 10px; padding: 8px; border: 2px solid var(--gold); border-radius: 8px; background: #182039; color: var(--gold); font-size: 1.5rem; letter-spacing: .12em; }
+#djMode { color: var(--gold); font-weight: bold; }
+#djCommand { font-size: clamp(1.4rem, 4vw, 2.3rem); }
+#djCommand.is-demonstrating { background: #4b5677; border-color: var(--pink); }
+#djCommandCount { color: var(--cream); font-size: .85rem; }
+#djActions button:not(:disabled) { box-shadow: 0 4px 0 var(--dark-red), 0 0 10px #f4c85c66; }
+#djActions button:disabled, #djRetry:disabled { opacity: .55; cursor: default; transform: none; }
+#level3 .game-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+#level3 .game-controls button, #enterStudio { min-height: 44px; }
+#djVictory:not([hidden]) { animation: dj-celebration .8s ease-out both; }
+@keyframes dj-celebration {
+    from { transform: translateY(10px); opacity: .5; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #djCommand { transition: none; }
+    #djVictory:not([hidden]) { animation: none; }
+}
+
+/* Dance Studio: localized gentle lighting; text remains readable with lights off. */
+[hidden] { display: none !important; }
+.studio-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0; }
+.studio-controls button, .progress-settings button { min-height: 44px; padding: 10px 15px; border: 2px solid var(--navy); border-radius: 10px; color: var(--navy); background: var(--gold); font-weight: bold; }
+.studio-controls button[aria-pressed="true"] { background: #cce8d8; box-shadow: inset 0 0 0 2px var(--green); }
+.studio-controls button:disabled { opacity: .55; cursor: default; }
+.studio-stage { position: relative; overflow: hidden; padding: 16px; border: 5px double var(--gold); border-radius: 20px; background: #1e2d42; color: #fff3d8; }
+.studio-scenery { position: relative; height: 105px; }
+.disco-ball { position: relative; z-index: 1; width: 54px; height: 54px; margin: auto; border: 2px solid #e2d9b8; border-radius: 50%; background: repeating-linear-gradient(0deg, transparent 0 9px, #476c7e 9px 11px), repeating-linear-gradient(90deg, #d2ddd8 0 9px, #537b88 9px 11px); }
+.disco-ball::before { content: ""; position: absolute; bottom: 100%; left: 50%; width: 2px; height: 18px; background: var(--gold); }
+.studio-dj { position: relative; z-index: 1; margin: 10px auto 0; max-width: 220px; padding: 5px; border: 2px solid #b7a066; border-radius: 9px; background: #29364c; font-size: 1.5rem; }
+.spotlight { position: absolute; top: 0; width: 110px; height: 150px; opacity: .15; clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%); transition: opacity .45s ease; }
+.spotlight-left { left: 12%; background: #f4c85c; transform: rotate(-20deg); }
+.spotlight-right { right: 12%; background: #78b799; transform: rotate(20deg); }
+.studio-move { position: relative; z-index: 1; display: grid; place-items: center; min-height: 140px; margin: 12px 0; padding: 16px 8px; border: 2px solid #b7a066; border-radius: 14px; background: #23374a; color: #fff3d8; font-size: clamp(1.5rem, 5vw, 3rem); font-weight: bold; overflow-wrap: anywhere; transition: box-shadow .45s ease; }
+#studioProgress { position: relative; font-weight: bold; }
+.dance-floor { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; max-width: 460px; margin: 12px auto 0; }
+.dance-floor span { height: 26px; border: 1px solid #80958a; border-radius: 4px; background: #476453; opacity: .6; transition: opacity .45s ease, box-shadow .45s ease; }
+.dance-floor span:nth-child(3n) { background: #79683f; }
+.dance-floor span:nth-child(3n + 1) { background: #795259; }
+.beat-even .dance-floor span:nth-child(even), .beat-odd .dance-floor span:nth-child(odd) { opacity: .9; box-shadow: inset 0 0 7px #f4c85c55; }
+.beat-even .spotlight-left, .beat-odd .spotlight-right { opacity: .3; }
+.beat-even .studio-move, .beat-odd .studio-move { box-shadow: inset 0 0 16px #f4c85c22; }
+.lights-off .spotlight { opacity: 0; }
+.lights-off .dance-floor span { opacity: .45; box-shadow: none; }
+.lights-off .studio-move { box-shadow: none; }
+#audioMessage, #earnedSummary, #storageMessage { font-size: .85rem; overflow-wrap: anywhere; }
+#customBuilder { margin-top: 20px; padding: 14px; border: 3px dashed var(--gold); border-radius: 14px; background: #fff9eb; }
+.custom-sequence { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding-left: 30px; text-align: left; }
+.custom-sequence li { padding: 8px 4px; border: 1px solid #cab98a; border-radius: 6px; background: #ffedbd; font-size: .85rem; overflow-wrap: anywhere; }
+.progress-settings { padding: 12px; text-align: center; }
+.progress-settings button { background: #f4d0d0; }
+.progress-settings p { margin-bottom: 0; }
+@media (max-width: 600px) {
+    .studio-controls { gap: 8px; }
+    .studio-controls button { flex: 1 1 130px; padding: 10px; }
+    .studio-stage { padding: 10px; }
+    .custom-sequence { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .spotlight-left { left: 2%; } .spotlight-right { right: 2%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .studio-stage *, .studio-stage *::before { transition: none !important; animation: none !important; }
+    .spotlight { display: none; }
+    .dance-floor span { box-shadow: none !important; opacity: .45 !important; }
+}
