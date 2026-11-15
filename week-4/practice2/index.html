@@ -1,0 +1,92 @@
+<!-- Practice 2: Palestine Crossword 
+     Author: Leslie Brockman
+     Description: Crossword puzzle about Palestine
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palestine Crossword | Practice 2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="game">
+        <header class="hero">
+            <p class="eyebrow">MPGA SCHOOLHOUSE · HOMEWORK</p>
+            <div class="decorations" aria-hidden="true">🌿 ✏️ ⭐ 📚</div>
+            <h1>Palestine Crossword</h1>
+            <h2 lang="ar" dir="rtl">الكلمات المتقاطعة عن فلسطين</h2>
+            <p>Discover Palestine, one word at a time!</p>
+            <p lang="ar" dir="rtl">اكتشف فلسطين كلمةً بعد كلمة!</p>
+        </header>
+        <section class="instructions">
+            <h2>🧩 How to Play <span lang="ar" dir="rtl">كيف تلعب؟</span></h2>
+            <p>Choose a clue and type. Space switches Across/Down; arrows move; Enter moves down; Tab moves right. Backspace or Delete erases.</p>
+            <p lang="ar" dir="rtl">اختر سؤالًا واكتب. المسافة تبدّل الاتجاه، والأسهم للتنقل، وEnter للأسفل وTab لليمين. Backspace أو Delete للمسح.</p>
+        </section>
+        <section class="game-layout" id="englishGame" lang="en" aria-labelledby="englishTitle">
+            <div class="puzzle-panel">
+                <h2 id="englishTitle">✏️ English Crossword</h2>
+                <div class="notebook">
+                    <div id="crosswordGrid" class="crossword-grid" role="group" aria-label="9 by 9 crossword puzzle">
+                        <!-- JavaScript creates the crossword cells here -->
+                    </div>
+                    <p id="gameMessage" class="message" role="status" aria-live="polite">Pick a clue to begin!</p>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="checkBtn">🔎 Show Errors</button>
+                    <button type="button" id="solutionBtn">💡 Show Solution</button>
+                    <button type="button" id="resetBtn">↻ Start Over</button>
+                </div>
+            </div>
+            <aside class="clue-panel">
+                <h2>📖 Clue Cards <span lang="ar" dir="rtl">بطاقات الأسئلة</span></h2>
+                <div class="clue-section">
+                    <h3>Across <span lang="ar" dir="rtl">أفقي</span></h3>
+                    <div id="acrossClues" class="clue-list">
+                        <!-- JavaScript creates across clues here -->
+                    </div>
+                </div>
+                <div class="clue-section">
+                    <h3>Down <span lang="ar" dir="rtl">عمودي</span></h3>
+                    <div id="downClues" class="clue-list">
+                        <!-- JavaScript creates down clues here -->
+                    </div>
+                </div>
+                <div class="fun-fact">
+                    <h3>🌿 Did You Know?</h3>
+                    <p>Olive trees have been cultivated in Palestine for thousands of years.</p>
+                    <p lang="ar" dir="rtl">تُزرع أشجار الزيتون في فلسطين منذ آلاف السنين.</p>
+                </div>
+            </aside>
+        </section>
+        <section class="game-layout" id="arabicGame" lang="ar" dir="rtl" aria-labelledby="arabicTitle">
+            <div class="puzzle-panel">
+                <h2 id="arabicTitle">✏️ الكلمات المتقاطعة العربية</h2>
+                <div class="notebook">
+                    <div id="arabicCrosswordGrid" class="crossword-grid" role="group" aria-label="كلمات متقاطعة من تسعة صفوف وتسعة أعمدة"></div>
+                    <p id="arabicGameMessage" class="message" role="status" aria-live="polite">اختر سؤالًا للبدء!</p>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="arabicCheckBtn" class="check-button">🔎 إظهار الأخطاء</button>
+                    <button type="button" id="arabicSolutionBtn" class="solution-button">💡 إظهار الحل</button>
+                    <button type="button" id="arabicResetBtn" class="reset-button">↻ ابدأ من جديد</button>
+                </div>
+            </div>
+            <aside class="clue-panel">
+                <h2>📖 بطاقات الأسئلة</h2>
+                <div class="clue-section"><h3>أفقي</h3><div id="arabicAcrossClues" class="clue-list"></div></div>
+                <div class="clue-section"><h3>عمودي</h3><div id="arabicDownClues" class="clue-list"></div></div>
+            </aside>
+        </section>
+        <footer>
+            <p>WEB 330 · Independent JavaScript Practice 2</p>
+            <p>Chapter 10 · Hands-On Project 10-5 Inspiration-Modification</p>
+            <p>MPGA Schoolhouse · Learning Through Play ❤️</p>
+        </footer>
+    </main>
+</body>
+</html>
