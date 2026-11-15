@@ -1,0 +1,74 @@
+<!--
+Author: Leslie Brockman
+Practice 3: Discovery Cards
+Description: A set of interactive discovery cards that reveal new content when navigated.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 3 | Discovery Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <header class="page-header">
+            <p class="eyebrow">JavaScript Practice 3</p>
+            <h1>🌟 Discover Something New!</h1>
+            <p>Five little discoveries, one big adventure.</p>
+        </header>
+
+        <section class="discovery" aria-labelledby="discovery-title">
+            <div class="card-counter" id="cardCounter">
+                Discovery 1 of 5
+            </div>
+
+            <article class="discovery-card" id="discoveryCard">
+                <div class="card-art" id="cardArt" aria-hidden="true">
+                    🌍
+                </div>
+
+                <div class="card-content">
+                    <p class="card-category" id="cardCategory">
+                        Featured Discovery
+                    </p>
+                    <h2 id="discovery-title">Explore the World</h2>
+                    <p class="card-description" id="cardDescription">
+                        Every discovery begins with a little curiosity!
+                    </p>
+                    <a class="card-link" id="cardLink" href="#">
+                        Explore This Page →
+                    </a>
+                </div>
+            </article>
+
+            <div class="card-controls">
+                <button type="button" id="previousBtn">
+                    ← Previous
+                </button>
+                <button type="button" id="randomBtn" class="surprise-btn">
+                    🎲 Surprise Me!
+                </button>
+                <button type="button" id="nextBtn">
+                    Next →
+                </button>
+            </div>
+
+            <div class="card-dots" id="cardDots" aria-label="Card navigation">
+                <!-- JavaScript will create five navigation dots. -->
+            </div>
+
+            <p class="status-message" id="statusMessage" aria-live="polite">
+                Ready to explore?
+            </p>
+        </section>
+
+        <footer class="page-footer">
+            <p>Made with curiosity, color, and a little JavaScript. ❤️</p>
+        </footer>
+    </main>
+</body>
+</html>
