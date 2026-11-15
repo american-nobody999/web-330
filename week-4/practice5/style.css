@@ -1,0 +1,166 @@
+/* Practice 5: Professor David's compact conversion exhibit.
+Author: Leslie Brockman
+ These will change per project. */
+
+:root {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: #243f49;
+    background: #f8f0da;
+    --cream: #fffdf3;
+    --teal: #247b79;
+    --blue: #326c9b;
+    --green: #397b55;
+    --coral: #bb5144;
+    --gold: #aa7831;
+    --line: #dbcfad;
+    --gap: 14px;
+    --radius: 14px;
+    --border: 2px solid var(--line);
+    --shadow: 0 4px 0 #dfd2b3;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; line-height: 1.45; background: radial-gradient(circle at 10% 0%, #ffe4ad, transparent 45%), #f8f0da; }
+button, input, select { font: inherit; }
+button, select, summary { cursor: pointer; }
+button, input, select { min-height: 44px; }
+button { touch-action: manipulation; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #184f86; outline-offset: 3px; }
+h1, h2, p, dd, button { overflow-wrap: anywhere; }
+h1 { margin: 8px 0; color: #246361; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.15; text-shadow: 1px 2px #e9d298; }
+h2 { margin: 0 0 8px; color: var(--teal); font-size: 1.2rem; }
+p { margin: 0 0 8px; }
+.laboratory-entrance, .laboratory, .laboratory-footer { max-width: 1100px; margin: auto; padding: 14px 20px; }
+.laboratory-entrance { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .65fr); gap: 0 24px; align-items: center; }
+.laboratory-entrance > p, .laboratory-entrance > h1 { grid-column: 1; }
+.laboratory-sign { color: #75501d; font-size: .65rem; font-weight: bold; letter-spacing: .1em; }
+.laboratory-subtitle { color: var(--coral); font-weight: bold; font-size: .9rem; }
+.mascot { position: relative; grid-column: 2; grid-row: 1 / 5; display: flex; align-items: center; gap: 12px; padding: 12px; background: #e5efe2; border: var(--border); border-radius: var(--radius); }
+.mascot-placeholder { flex: 0 0 90px; min-height: 100px; display: grid; place-items: center; padding: 8px; border: 2px dashed #7c9d94; border-radius: 12px; font-size: .68rem; text-align: center; background: var(--cream); }
+.speech-bubble { margin: 0; padding: 10px; border: 1px solid #bca36e; border-radius: 14px 14px 14px 2px; background: #fff8dc; font-size: .86rem; font-weight: bold; }
+.scientist-decoration { position: absolute; right: 5px; bottom: -9px; }
+
+/* Compact stations and shared panel surfaces. */
+.laboratory { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
+.laboratory > section, .laboratory > details { min-width: 0; padding: 16px; border: var(--border); border-top: 4px solid var(--gold); border-radius: var(--radius); background: var(--cream); box-shadow: var(--shadow); }
+.station-panel, .discovery-notebook, .laboratory-notes { grid-column: 1 / -1; }
+.station-panel > p { font-size: .85rem; }
+.station-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.station-button { --station-color: #287a78; --station-tint: #e1f0e9; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 7px; border: 2px solid var(--station-color); border-radius: 10px; background: var(--station-tint); color: var(--station-color); font-size: .85rem; font-weight: bold; }
+.station-button[data-category="mass"] { --station-color: #326c9b; --station-tint: #e5eff9; }
+.station-button[data-category="length"] { --station-color: #397b55; --station-tint: #e7f2de; }
+.station-button[data-category="volume"] { --station-color: #99483d; --station-tint: #fbe6dd; }
+.station-button[data-category="area"] { --station-color: #7a568e; --station-tint: #f0e7f6; }
+.station-button[data-category="time"] { --station-color: #78571d; --station-tint: #fff0c4; }
+.station-button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--station-color); text-decoration: underline; text-underline-offset: 3px; }
+#conversionForm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form-field { min-width: 0; display: grid; gap: 4px; }
+.form-field:first-child, .workbench-controls { grid-column: 1 / -1; }
+.form-field label { color: #365d64; font-size: .85rem; font-weight: bold; }
+.form-field input, .form-field select { width: 100%; min-width: 0; padding: 8px; border: 2px solid #91aea7; border-radius: 8px; color: #243f49; background: #fffefa; font-size: 1rem; }
+.form-field input[aria-invalid="true"] { border-color: #af3e37; background: #fff0eb; }
+.workbench-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.workbench-controls button { flex: 1 1 auto; padding: 8px 12px; border: 1px solid #1e6560; border-radius: 9px; background: var(--teal); color: white; font-weight: bold; box-shadow: 0 2px 0 #174d48; font-size: .85rem; }
+#convertBtn { flex-basis: 100%; }
+#swapBtn { background: #e7bc65; color: #473612; border-color: #9e722d; }
+#clearBtn { background: #f4c6b5; color: #68382c; border-color: #ab6250; }
+.measurement-results { margin: 8px 0; }
+.measurement-results dt { margin-top: 10px; font-size: .75rem; font-weight: bold; color: #4c6b70; }
+.measurement-results dd { margin: 3px 0 0; min-height: 22px; }
+#convertedValue { color: #256c56; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: bold; }
+#conversionFormula { padding: 8px; background: #f7efd8; border-left: 3px solid #c6a255; font: .8rem/1.5 ui-monospace, monospace; }
+#conversionFormula:empty { padding: 0; border: 0; }
+#conversionExplanation, #resultMessage { font-size: .88rem; }
+#resultMessage { margin: 12px 0 0; padding: 10px; border-radius: 9px; background: #e6f1ec; color: #315f53; font-weight: bold; }
+.david-reaction { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 8px 10px; border-left: 4px solid #6c9694; border-radius: 8px; background: #eaf3ee; color: #3a6867; font-size: .85rem; }
+#reactionMessage { margin: 0; }
+.david-reaction[data-state="thinking"] { background: #e9f1fb; border-color: var(--blue); color: #285c86; }
+.david-reaction[data-state="success"] { background: #e6f3df; border-color: var(--green); color: #2d6543; }
+.david-reaction[data-state="error"] { background: #fce6df; border-color: var(--coral); color: #8e3d34; }
+.laboratory > .discovery-notebook { border-left: 7px solid #8b6942; background: repeating-linear-gradient(0deg, transparent 0 27px, #729ba21c 27px 28px), #fff9e9; }
+.discovery-notebook h2 { color: #79572f; }
+#scienceFact { font-weight: bold; }
+#referenceMeasurement { display: inline-block; padding: 5px 10px; border-radius: 6px; background: #fff0be; }
+#scienceExplanation { margin-top: 8px; }
+.discovery-notebook, .laboratory-notes { font-size: .88rem; }
+.science-note { margin: 6px 0 0; color: #5d6458; }
+summary { min-height: 32px; font-weight: bold; color: var(--teal); }
+.laboratory-notes ul { padding-left: 20px; margin: 8px 0 0; }
+.laboratory-footer { text-align: center; color: #536a62; font-size: .8rem; }
+.laboratory-footer p { margin: 4px 0; }
+
+/* All instruments are symbolic; only the selected figure is displayed. */
+.experiment-instrument { margin: 10px 0 14px; padding: 10px; border: 1px solid #bfd2c9; border-radius: 12px; background: #edf4ef; text-align: center; }
+.instrument { --level: 25%; --heat: #448fc4; margin: 0; }
+.instrument-art { position: relative; margin: 8px auto; }
+figcaption { font-size: .9rem; font-weight: bold; color: #365d64; }
+.instrument-note { max-width: 420px; margin: 4px auto; font-size: .75rem; color: #526768; }
+.instrument-reading { margin: 6px 0 0; font-size: .8rem; font-weight: bold; overflow-wrap: anywhere; }
+
+/* Temperature: bounded illustrative range, with numeric text retaining the actual value. */
+.thermometer { width: 28px; height: 100px; border: 3px solid #698c91; border-radius: 18px; background: repeating-linear-gradient(0deg, transparent 0 13px, #68898b55 13px 15px), #fffefa; }
+.thermometer-fill { position: absolute; inset: auto 4px 0; height: var(--level); border-radius: 10px; background: var(--heat); transition: height .7s ease, background-color .7s ease; }
+.thermometer-bulb { position: absolute; bottom: -9px; left: -5px; width: 32px; height: 32px; border: 3px solid #698c91; border-radius: 50%; background: var(--heat); transition: background-color .7s ease; }
+
+/* Mass: a level balance represents equal mass before and after conversion. */
+.balance { width: 180px; height: 100px; border-bottom: 8px solid var(--gold); }
+.balance-post { position: absolute; bottom: 0; left: calc(50% - 4px); width: 8px; height: 80px; background: var(--gold); }
+.balance-beam { position: absolute; top: 14px; left: 10px; width: 160px; height: 6px; background: var(--teal); transform-origin: center; }
+.balance-tray { position: absolute; top: 35px; width: 54px; height: 20px; border: 3px solid var(--gold); border-radius: 0 0 30px 30px; background: #efd9a5; }
+.balance-tray::before { content: ""; position: absolute; height: 35px; width: 2px; background: var(--gold); top: -38px; left: 23px; }
+.left-tray { left: -10px; } .right-tray { right: -10px; }
+.instrument.play .balance-beam { animation: balance-settle .9s ease both; }
+@keyframes balance-settle { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-7deg); } 65% { transform: rotate(5deg); } }
+
+/* Length: ticks have no physical calibration. */
+.ruler { width: min(100%, 260px); height: 46px; margin-block: 32px; border: 2px solid var(--gold); border-radius: 5px; background: repeating-linear-gradient(90deg, #8a6729 0 2px, transparent 2px 20px) top / 100% 15px no-repeat, #f8dc90; }
+.ruler-indicator { position: absolute; top: -14px; left: var(--level); width: 4px; height: 68px; border-radius: 4px; background: var(--coral); transition: left .7s ease; }
+
+/* Volume: graduation marks and bubbles are decorative. */
+.beaker { width: 90px; height: 100px; overflow: hidden; border: 3px solid #6c939c; border-top: 0; border-radius: 4px 4px 15px 15px; background: #ffffff90; }
+.beaker::after { content: ""; position: absolute; inset: 5px 5px 8px auto; width: 18px; background: repeating-linear-gradient(0deg, transparent 0 15px, #476e7a 15px 17px); }
+.beaker-liquid { position: absolute; bottom: 0; width: 100%; height: var(--level); background: #49b8c4aa; transition: height .7s ease; }
+.beaker-liquid i { position: absolute; bottom: 5px; left: 18%; width: 8px; height: 8px; border: 1px solid white; border-radius: 50%; }
+.beaker-liquid i:nth-child(2) { left: 48%; bottom: 15px; }
+.beaker-liquid i:nth-child(3) { left: 70%; bottom: 8px; }
+.instrument.play .beaker-liquid i { animation: bubble-rise .8s ease both; }
+@keyframes bubble-rise { from { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(-25px); opacity: 0; } }
+
+/* Area: discrete illustrative cells emphasize squared units. */
+.area-grid { display: grid; grid-template-columns: repeat(4, 1fr); width: 100px; height: 100px; gap: 3px; }
+.area-grid span { background: #fffaf0; border: 1px solid #8ca690; }
+.area-grid span.filled { background: #75b18c; }
+.instrument.play .area-grid span.filled { animation: cell-highlight .7s ease both; }
+@keyframes cell-highlight { from { background: #fffaf0; } to { background: #75b18c; } }
+
+/* Time: one brief turn on success, with no timer or elapsed-time claim. */
+.clock { width: 100px; height: 100px; border: 5px solid var(--gold); border-radius: 50%; background: repeating-conic-gradient(#638783 0deg 2deg, transparent 2deg 30deg), #fff9e6; }
+.clock::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: #fff9e6; }
+.clock-hour, .clock-minute { position: absolute; z-index: 1; bottom: 50%; left: calc(50% - 2px); width: 4px; background: var(--teal); border-radius: 4px; transform-origin: bottom; }
+.clock-hour { height: 23px; transform: rotate(50deg); }
+.clock-minute { height: 33px; }
+.clock-gear { position: absolute; z-index: 2; bottom: -12px; right: -18px; color: #85601e; font-size: 32px; }
+.instrument.play .clock-minute { animation: clock-turn .9s ease both; }
+.instrument.play .clock-gear { animation: gear-turn .9s ease both; }
+@keyframes clock-turn { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes gear-turn { from { transform: rotate(0); } to { transform: rotate(-180deg); } }
+
+@media (max-width: 850px) {
+    .laboratory-entrance { grid-template-columns: minmax(0, 1fr); }
+    .mascot { grid-column: 1; grid-row: auto; margin-top: 8px; }
+    .station-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+    .laboratory { grid-template-columns: minmax(0, 1fr); }
+    .laboratory-entrance, .laboratory, .laboratory-footer { padding: 12px; }
+    .laboratory > section, .laboratory > details { padding: 12px; }
+    .station-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 360px) {
+    #conversionForm { grid-template-columns: minmax(0, 1fr); }
+    .mascot { gap: 8px; padding: 8px; }
+    .mascot-placeholder { flex-basis: 70px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
