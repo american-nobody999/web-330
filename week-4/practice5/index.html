@@ -1,0 +1,165 @@
+<!-- Practice 5: Professor David's Great Conversion Laboratory
+     Author: Leslie Brockman
+this is going to be so much fun-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor David's Great Conversion Laboratory</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="laboratory-entrance">
+        <p class="laboratory-sign">EST. WHEN DAVID DISCOVERED COFFEE</p>
+        <h1>Professor David's Great Conversion Laboratory</h1>
+        <p class="laboratory-subtitle">Six Stations. Endless Discoveries. One Very Curious Robot.</p>
+        <p>Welcome, junior scientists! Pick a station and help David make sense of measurements.</p>
+        <div id="professorDavid" class="mascot">
+            <!-- Existing Schoolhouse mascot asset was not found in this workspace.
+                 Insert the approved image or SVG here, with meaningful alternative text. Will do in website later. -->
+            <div class="mascot-placeholder">Professor David's Schoolhouse artwork goes here.</div>
+            <p class="speech-bubble">Science is just curiosity with better measuring tools!</p>
+            <div class="scientist-decoration" aria-hidden="true">🥼 🧪</div>
+        </div>
+    </header>
+    <main class="laboratory">
+        <section class="station-panel" aria-labelledby="stationHeading">
+            <h2 id="stationHeading">Choose Your Experiment!</h2>
+            <p>Every measurement has a story. Which one will you explore?</p>
+            <div class="station-list">
+                <button type="button" class="station-button" data-category="temperature" aria-pressed="true">
+                    <span aria-hidden="true">🌡️</span>
+                    <span class="station-title">Temperature</span>
+                </button>
+                <button type="button" class="station-button" data-category="mass" aria-pressed="false">
+                    <span aria-hidden="true">⚖️</span>
+                    <span class="station-title">Mass</span>
+                </button>
+                <button type="button" class="station-button" data-category="length" aria-pressed="false">
+                    <span aria-hidden="true">📏</span>
+                    <span class="station-title">Length &amp; Distance</span>
+                </button>
+                <button type="button" class="station-button" data-category="volume" aria-pressed="false">
+                    <span aria-hidden="true">🧪</span>
+                    <span class="station-title">Volume &amp; Capacity</span>
+                </button>
+                <button type="button" class="station-button" data-category="area" aria-pressed="false">
+                    <span aria-hidden="true">📐</span>
+                    <span class="station-title">Area</span>
+                </button>
+                <button type="button" class="station-button" data-category="time" aria-pressed="false">
+                    <span aria-hidden="true">⏱️</span>
+                    <span class="station-title">Time</span>
+                </button>
+            </div>
+        </section>
+        <section class="conversion-workbench" aria-labelledby="workbenchHeading">
+            <h2 id="workbenchHeading">The Conversion Workbench</h2>
+            <p>Enter a measurement and let the experiment begin!</p>
+            <div id="experimentInstrument" class="experiment-instrument">
+                <figure class="instrument" data-instrument="temperature">
+                    <div class="instrument-art thermometer" aria-hidden="true"><div class="thermometer-fill"></div><span class="thermometer-bulb"></span></div>
+                    <figcaption>Temperature explorer</figcaption>
+                    <p class="instrument-note">Symbolic range: −20°C to 120°C. Water freezes at 0°C and boils near 100°C at standard pressure.</p>
+                </figure>
+                <figure class="instrument" data-instrument="mass" hidden>
+                    <div class="instrument-art balance" aria-hidden="true"><span class="balance-post"></span><div class="balance-beam"><span class="balance-tray left-tray"></span><span class="balance-tray right-tray"></span></div></div>
+                    <figcaption>Same object, different units</figcaption>
+                    <p class="instrument-note">Changing units does not change the object's mass. The scale settles level.</p>
+                </figure>
+                <figure class="instrument" data-instrument="length" hidden>
+                    <div class="instrument-art ruler" aria-hidden="true"><span class="ruler-indicator"></span></div>
+                    <figcaption>Distance explorer</figcaption>
+                    <p class="instrument-note">This ruler is symbolic, not a literal scale drawing.</p>
+                </figure>
+                <figure class="instrument" data-instrument="volume" hidden>
+                    <div class="instrument-art beaker" aria-hidden="true"><div class="beaker-liquid"><i></i><i></i><i></i></div></div>
+                    <figcaption>Fill the beaker</figcaption>
+                    <p class="instrument-note">Symbolic liquid level, not a calibrated measurement.</p>
+                </figure>
+                <figure class="instrument" data-instrument="area" hidden>
+                    <div class="instrument-art area-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    <figcaption>Count square units</figcaption>
+                    <p class="instrument-note">Area covers a surface: length × width. This symbolic grid shows square units.</p>
+                </figure>
+                <figure class="instrument" data-instrument="time" hidden>
+                    <div class="instrument-art clock" aria-hidden="true"><span class="clock-hour"></span><span class="clock-minute"></span><span class="clock-gear">⚙</span></div>
+                    <figcaption>Duration explorer</figcaption>
+                    <p class="instrument-note">A brief decorative turn, not actual elapsed time or a live clock.</p>
+                </figure>
+                <p id="instrumentReading" class="instrument-reading">Choose a measurement to begin.</p>
+            </div>
+            <form id="conversionForm">
+                <div class="form-field">
+                    <label for="measurementInput">Enter Your Measurement</label>
+                    <input type="number" id="measurementInput" name="measurement" step="any" placeholder="For example, 32">
+                </div>
+                <div class="form-field">
+                    <label for="fromUnit">Convert From</label>
+                    <select id="fromUnit" name="fromUnit">
+                        <option value="fahrenheit" selected>Fahrenheit</option>
+                        <option value="celsius">Celsius</option>
+                        <option value="kelvin">Kelvin</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="toUnit">Convert To</label>
+                    <select id="toUnit" name="toUnit">
+                        <option value="fahrenheit">Fahrenheit</option>
+                        <option value="celsius" selected>Celsius</option>
+                        <option value="kelvin">Kelvin</option>
+                    </select>
+                </div>
+                <div class="workbench-controls">
+                    <button id="convertBtn" type="submit">Convert My Measurement!</button>
+                    <button id="swapBtn" type="button">Swap Units</button>
+                    <button id="clearBtn" type="button">Clear Experiment</button>
+                </div>
+            </form>
+            <div id="davidReaction" class="david-reaction" data-state="idle">
+                <span class="reaction-indicator" aria-hidden="true">✦</span>
+                <p id="reactionMessage">Everything is ready! Please don't explode the laboratory.</p>
+            </div>
+        </section>
+        <section class="experiment-results" aria-labelledby="resultsHeading">
+            <h2 id="resultsHeading">Experiment Results</h2>
+            <dl class="measurement-results">
+                <dt>Original measurement</dt>
+                <dd><output id="originalValue" for="measurementInput fromUnit" form="conversionForm"></output></dd>
+                <dt>Converted measurement</dt>
+                <dd><output id="convertedValue" for="measurementInput fromUnit toUnit" form="conversionForm"></output></dd>
+                <dt>Conversion formula</dt>
+                <dd id="conversionFormula"></dd>
+                <dt>Explanation</dt>
+                <dd id="conversionExplanation"></dd>
+            </dl>
+            <p id="resultMessage" role="status">Professor David is waiting for your first experiment!</p>
+        </section>
+        <section class="discovery-notebook" aria-labelledby="notebookHeading">
+            <h2 id="notebookHeading">Professor David's Discovery Notebook</h2>
+            <p id="scienceFact">Water freezes at 0°C (32°F) and boils at approximately 100°C (212°F) at standard atmospheric pressure.</p>
+            <div id="referenceMeasurement"></div>
+            <div id="scienceExplanation"></div>
+            <p class="science-note"><small>Temperature reference points depend on conditions such as atmospheric pressure.</small></p>
+        </section>
+        <details class="laboratory-notes">
+            <summary>Laboratory Safety &amp; Learning Notes</summary>
+            <ul>
+                <li>Enter measurements as numbers. Decimals are welcome!</li>
+                <li>Our laboratory uses standard conversion relationships.</li>
+                <li>Mass tells us how much matter an object contains; weight is the force of gravity on it.</li>
+                <li>Our U.S. customary liquid units are different from imperial units. Check your measuring tools!</li>
+                <li>Negative Kelvin temperatures are invalid for this introductory converter.</li>
+                <li>Results are educational and may be rounded to make them easier to read.</li>
+            </ul>
+        </details>
+    </main>
+    <footer class="laboratory-footer">
+        <p>MPGA Schoolhouse — Learning Through Discovery</p>
+        <p>Professor David reminds you: A failed experiment is just another question waiting to be answered.</p>
+        <p>WEB 330 — Week 4 — Practice 5</p>
+    </footer>
+</body>
+</html>
