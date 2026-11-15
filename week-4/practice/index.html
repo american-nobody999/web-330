@@ -1,0 +1,55 @@
+<!--
+      JavaScript 7th Edition
+      Chapter 10
+      Hands-on Project 10-2
+
+      Author: Leslie Brockman
+      Date: 11-14-2026  
+
+      Description: Shape Explorers HTML Structure
+   -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Explorers | Shape Matching</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<main class="game-shell">
+<header class="hero">
+<p class="eyebrow">MPGA SCHOOLHOUSE · ABC / 123</p>
+<h1>Shape Explorers <span aria-hidden="true">✦</span></h1>
+<p class="arabic" lang="ar" dir="rtl">مستكشفو الأشكال</p>
+<p>Match each colorful shape to its outline!</p>
+<p class="arabic" lang="ar" dir="rtl">طابق كل شكل ملون مع إطاره!</p>
+</header>
+<section class="toolbar" aria-label="Practice controls">
+<div><h2>Match the Shapes · طابق الأشكال</h2></div>
+<button type="button" id="resetBtn">Start over · ابدأ مجددًا</button>
+</section>
+<section class="board-panel" aria-label="Shape matching board">
+<div class="section-heading"><h2>Picture Board</h2><span lang="ar" dir="rtl">لوحة الأشكال</span></div>
+<p>Drag a shape onto its matching outline.</p>
+<p class="arabic" lang="ar" dir="rtl">اسحب الشكل إلى الإطار المطابق له.</p>
+<div id="puzzleBoard" class="puzzle-board"></div>
+</section>
+<section class="tray-panel" aria-label="Puzzle pieces">
+<div class="section-heading"><h2>Your Seven Pieces</h2><span lang="ar" dir="rtl">قطعك السبع</span></div>
+<div id="pieceTray" class="piece-tray">
+<div class="tray-slot"><div class="piece" id="piece-1" data-shape="large-triangle" data-rotation="0" role="img" aria-label="Large triangle one"><svg aria-hidden="true"></svg></div><p>Large triangle<span lang="ar" dir="rtl">مثلث كبير</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-2" data-shape="large-triangle" data-rotation="0" role="img" aria-label="Large triangle two"><svg aria-hidden="true"></svg></div><p>Large triangle<span lang="ar" dir="rtl">مثلث كبير</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-3" data-shape="medium-triangle" data-rotation="0" role="img" aria-label="Medium triangle"><svg aria-hidden="true"></svg></div><p>Medium triangle<span lang="ar" dir="rtl">مثلث متوسط</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-4" data-shape="small-triangle" data-rotation="0" role="img" aria-label="Small triangle one"><svg aria-hidden="true"></svg></div><p>Small triangle<span lang="ar" dir="rtl">مثلث صغير</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-5" data-shape="small-triangle" data-rotation="0" role="img" aria-label="Small triangle two"><svg aria-hidden="true"></svg></div><p>Small triangle<span lang="ar" dir="rtl">مثلث صغير</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-6" data-shape="square" data-rotation="0" role="img" aria-label="Square"><svg aria-hidden="true"></svg></div><p>Square<span lang="ar" dir="rtl">مربع</span></p></div>
+<div class="tray-slot"><div class="piece" id="piece-7" data-shape="parallelogram" data-rotation="0" role="img" aria-label="Parallelogram"><svg aria-hidden="true"></svg></div><p>Parallelogram<span lang="ar" dir="rtl">متوازي الأضلاع</span></p></div>
+</div>
+</section>
+</main>
+</body>
+</html>
