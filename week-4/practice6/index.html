@@ -1,0 +1,67 @@
+<!-- Practice 6: Professor David's compact conversion exhibit. 
+author: Leslie  Brockman    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 6 | Circus Memory Match</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="circus">
+        <header class="circus-header">
+            <p class="eyebrow">WEB 330 | Week 4 | Practice 6</p>
+            <h1>🎪 Circus Memory Match 🎪</h1>
+            <p class="subtitle">The Greatest Memory Show on Earth!</p>
+            <p>Step right up! Flip the cards, find the matching pairs, and put your memory to the test.</p>
+        </header>
+        <section class="game" aria-labelledby="gameTitle">
+            <div class="game-heading">
+                <h2 id="gameTitle">Welcome to the Big Top!</h2>
+                <p>Every great performer needs a sharp memory.</p>
+            </div>
+            <div class="scoreboard">
+                <div class="score">
+                    <span class="score-label">Matches</span>
+                    <strong id="matches">0 / 8</strong>
+                </div>
+                <div class="score">
+                    <span class="score-label">Moves</span>
+                    <strong id="moves">0</strong>
+                </div>
+                <div class="score">
+                    <span class="score-label">Time</span>
+                    <strong id="timer">00:00</strong>
+                </div>
+            </div>
+            <div class="game-controls">
+                <button type="button" id="startBtn">🎟️ Start the Show!</button>
+                <button type="button" id="restartBtn">↻ New Show</button>
+            </div>
+            <p class="game-message" id="gameMessage" role="status">The performers are waiting backstage!</p>
+            <div class="memory-board" id="memoryBoard" aria-label="Circus memory matching cards">
+                <!-- JavaScript creates and shuffles the matching cards here. -->
+            </div>
+            <div class="game-instructions">
+                <h3>🎩 How to Play</h3>
+                <p>Turn over two cards. If they match, they stay revealed. If they don't, remember where you saw them and try again!</p>
+                <p>Find all eight pairs to win the show.</p>
+            </div>
+            <section class="victory" id="victoryPanel" aria-labelledby="victoryTitle" hidden>
+                <div class="victory-stars" aria-hidden="true">⭐ 🎪 ⭐</div>
+                <h2 id="victoryTitle">Standing Ovation!</h2>
+                <p>You've matched every performer in the circus!</p>
+                <p id="finalScore"></p>
+                <button type="button" id="playAgainBtn">🎪 Play Again!</button>
+            </section>
+        </section>
+        <footer class="circus-footer">
+            <p>Made with imagination, memory, and a little circus magic.</p>
+            <p>JavaScript Practice 6 | Future Gaza Circus School Game</p>
+        </footer>
+    </main>
+</body>
+</html>
