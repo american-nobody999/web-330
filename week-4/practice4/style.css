@@ -1,0 +1,514 @@
+/* Practice 4: The Cosmic Oracle
+   Author: Leslie Brockman
+   Description: Styles for the cosmic fortune-telling arcade machine simulation. */
+:root {
+    --night: #101b30;
+    --navy: #1b2d4a;
+    --blue: #293e61;
+    --purple: #48345f;
+    --gold: #d9b76d;
+    --light-gold: #f5dfa5;
+    --cream: #fff1cc;
+    --paper: #f9e8bf;
+    --pink: #edb5cb;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 20%, #d9b76d 1px, transparent 3px),
+        radial-gradient(circle at 75% 40%, #ffffff 1px, transparent 3px),
+        radial-gradient(circle at 45% 80%, #d9b76d 1px, transparent 3px),
+        linear-gradient(145deg, #101b30, #352746, #172c48);
+    background-size: 130px 130px, 190px 190px, 250px 250px, cover;
+    color: var(--cream);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+    font: inherit;
+}
+
+.arcade {
+    width: min(100% - 24px, 720px);
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+.page-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.page-header h1 {
+    margin: 10px 0;
+    color: var(--light-gold);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.page-header > p:last-child {
+    color: #e6d9d1;
+    font-style: italic;
+}
+
+.machine {
+    max-width: 540px;
+    margin: 0 auto;
+    border: 8px solid #a47c41;
+    border-radius: 85px 85px 24px 24px;
+    background: var(--navy);
+    box-shadow:
+        0 0 0 5px var(--gold),
+        0 0 0 12px #392b38,
+        0 20px 45px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.machine-top {
+    padding: 28px 20px 22px;
+    background: linear-gradient(135deg, #48345f, #1c2945, #48345f);
+    border-bottom: 5px double var(--gold);
+    text-align: center;
+}
+
+.marquee-stars {
+    display: block;
+    color: var(--light-gold);
+    font-size: 1.5rem;
+    letter-spacing: 15px;
+    text-shadow: 0 0 12px var(--gold);
+}
+
+.machine-label {
+    margin: 14px 0 8px;
+    color: var(--light-gold);
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.machine-top h2 {
+    margin: 10px 0;
+    color: var(--light-gold);
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    text-shadow: 2px 3px 0 #61452e;
+}
+
+.machine-slogan {
+    color: var(--pink);
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.machine-body {
+    padding: 30px 28px 24px;
+    background: linear-gradient(90deg, #17263e, #304566, #17263e);
+}
+
+.celestial-window {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    overflow: hidden;
+    border: 9px ridge var(--gold);
+    border-radius: 50% 50% 44% 44%;
+    background: radial-gradient(circle, #455681, #202b4b 60%, #121b30);
+    box-shadow:
+        inset 0 0 35px #080f24,
+        0 0 20px rgba(245, 223, 165, 0.25);
+}
+
+.moon {
+    color: var(--light-gold);
+    font-size: 7rem;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(245, 223, 165, 0.8);
+    animation: moonFloat 5s ease-in-out infinite;
+}
+
+.planet {
+    position: absolute;
+    font-size: 2.5rem;
+}
+
+.planet-one {
+    top: 22%;
+    right: 12%;
+    animation: planetFloat 6s ease-in-out infinite;
+}
+
+.planet-two {
+    bottom: 27%;
+    left: 12%;
+    color: var(--pink);
+    animation: planetFloat 4s ease-in-out infinite reverse;
+}
+
+.planet-three {
+    top: 15%;
+    left: 22%;
+    color: var(--gold);
+}
+
+.star {
+    position: absolute;
+    color: var(--light-gold);
+    animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+
+.star-one {
+    top: 15%;
+    left: 15%;
+}
+
+.star-two {
+    top: 30%;
+    right: 25%;
+    animation-delay: 0.5s;
+}
+
+.star-three {
+    bottom: 25%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.star-four {
+    bottom: 35%;
+    left: 25%;
+    animation-delay: 1.5s;
+}
+
+.window-message {
+    z-index: 1;
+    margin: 20px 12px 0;
+    color: var(--light-gold);
+    font-size: 0.95rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.machine-instructions {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.machine-instructions p:first-child {
+    color: var(--light-gold);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.machine-instructions p:last-child {
+    color: #e4d6d0;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.machine-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.machine-controls button {
+    min-height: 48px;
+    padding: 13px 18px;
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reveal-btn {
+    background: var(--gold);
+    color: var(--night);
+    box-shadow: 0 5px 0 #7b5a30;
+}
+
+.new-btn {
+    background: var(--purple);
+    color: var(--cream);
+    box-shadow: 0 5px 0 #24182f;
+}
+
+.machine-controls button:hover {
+    transform: translateY(-2px);
+}
+
+.machine-controls button:active {
+    transform: translateY(3px);
+}
+
+.ticket-slot {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.ticket-slot p {
+    color: var(--light-gold);
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.slot-opening {
+    height: 16px;
+    margin: 12px auto 0;
+    border: 4px solid var(--gold);
+    border-radius: 8px;
+    background: #050910;
+    box-shadow: inset 0 3px 5px #000000;
+}
+
+.ticket-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.fortune-ticket {
+    width: 94%;
+    margin-top: 16px;
+    padding: 22px;
+    border: 2px dashed #ad844b;
+    border-radius: 4px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 26px,
+            rgba(173, 132, 75, 0.08) 27px
+        ),
+        var(--paper);
+    color: #3c3040;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.fortune-ticket[hidden] {
+    display: none;
+}
+
+.fortune-ticket.dispense {
+    animation: dispenseTicket 0.8s ease-out both;
+}
+
+.ticket-heading,
+.ticket-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #876333;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.ticket-symbol {
+    margin: 22px 0 10px;
+    font-size: 3.5rem;
+}
+
+.fortune-ticket h3 {
+    margin: 10px 0 16px;
+    color: #59416b;
+    font-size: 1.5rem;
+}
+
+.fortune-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.fortune-omen {
+    margin: 20px 0;
+    color: #876333;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.ticket-footer {
+    padding-top: 15px;
+    border-top: 1px dashed #ad844b;
+}
+
+.machine-status {
+    margin: 24px 0 0;
+    color: var(--light-gold);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.machine-base {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 18px;
+    border-top: 5px double var(--gold);
+    background: linear-gradient(90deg, #36263f, #59436a, #36263f);
+    color: var(--light-gold);
+    text-align: center;
+}
+
+.machine-base p {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.page-footer {
+    margin: 40px auto 10px;
+    color: #e2d3d0;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+button:focus-visible {
+    outline: 3px solid var(--pink);
+    outline-offset: 4px;
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes planetFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(14px);
+    }
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes dispenseTicket {
+    from {
+        opacity: 0;
+        transform: translateY(-70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .arcade {
+        width: min(100% - 20px, 720px);
+        padding: 24px 0;
+    }
+
+    .machine {
+        border-width: 5px;
+        border-radius: 55px 55px 18px 18px;
+        box-shadow:
+            0 0 0 3px var(--gold),
+            0 0 0 6px #392b38;
+    }
+
+    .machine-top {
+        padding: 24px 12px 18px;
+    }
+
+    .machine-body {
+        padding: 20px 14px;
+    }
+
+    .celestial-window {
+        min-height: 250px;
+        border-width: 6px;
+    }
+
+    .moon {
+        font-size: 5rem;
+    }
+
+    .planet {
+        font-size: 1.8rem;
+    }
+
+    .machine-controls {
+        flex-direction: column;
+    }
+
+    .machine-controls button {
+        width: 100%;
+    }
+
+    .fortune-ticket {
+        width: 100%;
+        padding: 18px 12px;
+    }
+
+    .fortune-text {
+        font-size: 1rem;
+    }
+
+    .ticket-heading,
+    .ticket-footer {
+        font-size: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
