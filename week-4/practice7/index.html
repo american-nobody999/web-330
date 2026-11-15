@@ -1,0 +1,61 @@
+<!-- Practice 7: Professor David's compact conversion exhibit-- are we using david as a background with the performers?. 
+author: Leslie  Brockman -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 7 | Uncle Tito's Juggling Chaos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="circus">
+        <header class="circus-header">
+            <p class="eyebrow">WEB 330 | Week 4 | Practice 7</p>
+            <h1>🎪 Uncle Tito's Juggling Chaos!</h1>
+            <p class="subtitle">Catch it before the circus collapses!</p>
+            <p>Uncle Tito has too many things in the air. Give him a hand!</p>
+        </header>
+        <section class="game" aria-labelledby="gameTitle">
+            <h2 id="gameTitle">The Great Juggling Disaster</h2>
+            <div class="scoreboard">
+                <div class="score">
+                    <span>Objects Caught</span>
+                    <strong id="juggleScore">0</strong>
+                </div>
+                <div class="score">
+                    <span>Lives</span>
+                    <strong id="juggleLives">3</strong>
+                </div>
+            </div>
+            <div class="game-controls">
+                <button type="button" id="juggleStart">🎟️ Start Juggling!</button>
+                <button type="button" id="juggleStop">🛑 Stop the Show</button>
+            </div>
+            <p id="juggleMessage" class="game-message" role="status">
+                Uncle Tito is warming up backstage!
+            </p>
+            <div id="juggleStage" class="juggle-stage" aria-label="Juggling game area">
+                <div class="stage-curtain left-curtain" aria-hidden="true"></div>
+                <div class="stage-curtain right-curtain" aria-hidden="true"></div>
+                <div class="stage-placeholder" aria-hidden="true">
+                    <span>🤹</span>
+                    <p>Ready for chaos?</p>
+                </div>
+                <div class="stage-floor" aria-hidden="true"></div>
+            </div>
+            <div class="instructions">
+                <h3>🎩 How to Play</h3>
+                <p>Catch the falling objects by clicking or tapping them before they reach the floor.</p>
+                <p>Every successful catch earns one point. Miss three objects and the show is over!</p>
+            </div>
+        </section>
+        <footer>
+            <p>WEB 330 JavaScript Practice | Future Circus Arcade Template</p>
+        </footer>
+    </main>
+</body>
+</html>
