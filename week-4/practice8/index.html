@@ -1,0 +1,186 @@
+<!-- Practice 8: Clown Says! with the DJ -->
+<!-- author: Leslie Brockman -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 8 | Clown Says!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="circus">
+        <header class="circus-header">
+            <p class="eyebrow">WEB 330 | WEEK 4 | PRACTICE 8</p>
+            <h1>🤡 Clown Says!</h1>
+            <p class="subtitle">The clown is watching. Are you listening?</p>
+        </header>
+        <nav class="level-tickets" aria-label="Dance game progression">
+            <button type="button" class="level-ticket" data-level="1" aria-controls="level1" aria-current="step">Level 1 — Clown Says! <span class="ticket-status">Current</span></button>
+            <button type="button" class="level-ticket" data-level="2" aria-controls="level2" disabled>Level 2 — Remember the Routine <span class="ticket-status">Locked</span></button>
+            <button type="button" class="level-ticket" data-level="3" aria-controls="level3" disabled>Level 3 — DJ's Final Challenge <span class="ticket-status">Locked</span></button>
+            <button type="button" class="level-ticket studio-ticket" data-level="studio" aria-controls="danceStudio" disabled>Dance Studio <span class="ticket-status">Locked</span></button>
+        </nav>
+        <section id="level1" class="game level-section" aria-labelledby="gameTitle">
+            <div class="game-intro">
+                <h2 id="gameTitle">Welcome to the Clown Academy!</h2>
+                <p>Listen carefully. This clown loves tricking people!</p>
+            </div>
+            <div class="scoreboard">
+                <div class="score">
+                    <span>Score</span>
+                    <strong id="clownScore">0</strong>
+                </div>
+                <div class="score">
+                    <span>Round</span>
+                    <strong id="clownRound">0 / 10</strong>
+                </div>
+            </div>
+            <div class="clown-stage">
+                <div class="clown-face" id="clownFace" aria-hidden="true">🤡</div>
+                <div class="speech-bubble">
+                    <p id="clownInstruction">Ready to play?</p>
+                </div>
+                <div class="timer-track" aria-hidden="true">
+                    <div class="timer-fill" id="clownTimer"></div>
+                </div>
+            </div>
+            <p class="game-message" id="clownMessage" role="status">
+                The clown is waiting for the show to begin!
+            </p>
+            <div class="action-buttons" id="clownActions">
+                <button type="button" data-action="jump">🦘 Jump!</button>
+                <button type="button" data-action="wave">👋 Wave!</button>
+                <button type="button" data-action="spin">🌀 Spin!</button>
+                <button type="button" data-action="clap">👏 Clap!</button>
+            </div>
+            <div class="game-controls">
+                <button type="button" id="clownStart">🎟️ Start the Show!</button>
+            </div>
+            <div class="instructions">
+                <h3>🎩 How to Play</h3>
+                <p>If the instruction begins with <strong>Clown Says</strong>, click the matching action before time runs out.</p>
+                <p>If the clown gives an instruction without saying <strong>Clown Says</strong>, don't click anything!</p>
+                <p>Complete ten rounds and see how many times you outsmarted the clown.</p>
+            </div>
+            <section class="victory" id="clownVictory" hidden>
+                <h2>🎉 The Clown Has Been Outsmarted!</h2>
+                <p id="clownFinalScore"></p>
+                <p id="level1Reward"></p>
+                <button type="button" id="continueLevel2">Continue to Level 2</button>
+                <button type="button" id="clownPlayAgain">Play Again!</button>
+            </section>
+        </section>
+        <section id="level2" class="game level-section" aria-labelledby="level2Title" hidden>
+            <h2 id="level2Title">Level 2 — Remember the Routine</h2>
+            <p>Watch the moves, then repeat them in order. Build from two moves to six!</p>
+            <div class="scoreboard">
+                <div class="score"><span>Sequence length</span><strong id="routineLength">2 / 6</strong></div>
+                <div class="score"><span>Your progress</span><strong id="routineProgress">0 / 2</strong></div>
+            </div>
+            <div class="routine-stage">
+                <p id="routineMode">Ready to watch?</p>
+                <p id="routineMove" class="routine-move">🎧</p>
+            </div>
+            <p id="routineMessage" class="game-message" role="status">Select Start Routine to begin.</p>
+            <div id="routineActions" class="action-buttons">
+                <button type="button" data-action="jump" disabled>🦘 Jump!</button>
+                <button type="button" data-action="wave" disabled>👋 Wave!</button>
+                <button type="button" data-action="spin" disabled>🌀 Spin!</button>
+                <button type="button" data-action="clap" disabled>👏 Clap!</button>
+            </div>
+            <div class="game-controls">
+                <button type="button" id="routineStart">Start / Restart Routine</button>
+                <button type="button" id="routineRetry" disabled>Watch / Retry This Sequence</button>
+            </div>
+            <section id="routineVictory" class="victory" hidden>
+                <h3>🎉 Six moves! The DJ approves!</h3>
+                <p>Your six-move routine has been earned.</p>
+                <button type="button" id="continueLevel3">Continue to Level 3</button>
+            </section>
+        </section>
+        <section id="level3" class="game level-section" aria-labelledby="level3Title" hidden>
+            <h2 id="level3Title">Level 3 — DJ's Final Challenge</h2>
+            <p>Watch every command. Repeat only the moves that begin with <strong>Clown Says</strong>, in order.</p>
+            <div class="scoreboard">
+                <div class="score"><span>Round</span><strong id="djRound">1 / 4</strong></div>
+                <div class="score"><span>Valid moves repeated</span><strong id="djProgress">0 / 2</strong></div>
+            </div>
+            <div class="routine-stage dj-stage">
+                <div class="dj-booth" aria-hidden="true">◉ 🎧 🤡 ◉</div>
+                <p id="djMode">Ready for the final challenge?</p>
+                <p id="djCommand" class="routine-move">🎧</p>
+                <p id="djCommandCount">Round 1: 2 valid moves and 1 trick command.</p>
+            </div>
+            <p id="djMessage" class="game-message" role="status">Start the challenge when you are ready.</p>
+            <div id="djActions" class="action-buttons">
+                <button type="button" data-action="jump" disabled>🦘 Jump!</button>
+                <button type="button" data-action="wave" disabled>👋 Wave!</button>
+                <button type="button" data-action="spin" disabled>🌀 Spin!</button>
+                <button type="button" data-action="clap" disabled>👏 Clap!</button>
+            </div>
+            <div class="game-controls">
+                <button type="button" id="djStart">Start / Restart Challenge</button>
+                <button type="button" id="djRetry" disabled>Watch / Retry This Round</button>
+            </div>
+            <section id="djVictory" class="victory" hidden>
+                <h3>🎉 The DJ's grand finale!</h3>
+                <p>Your eight-move routine is earned. The Dance Studio is unlocked!</p>
+                <button type="button" id="enterStudio">Enter the Dance Studio</button>
+            </section>
+        </section>
+        <section id="danceStudio" class="game level-section" aria-labelledby="studioTitle" hidden>
+            <h2 id="studioTitle">Dance Studio</h2>
+            <p>Your routines, your spotlight! Music starts only when you choose to play.</p>
+            <div class="studio-controls" aria-label="Studio modes">
+                <button type="button" id="earnedMode" aria-pressed="true">Grand Finale</button>
+                <button type="button" id="customMode" aria-pressed="false">Create My Own</button>
+            </div>
+            <p id="earnedSummary"></p>
+            <div id="studioStage" class="studio-stage lights-off">
+                <div class="studio-scenery" aria-hidden="true">
+                    <div class="disco-ball"></div><span class="spotlight spotlight-left"></span><span class="spotlight spotlight-right"></span>
+                    <p class="studio-dj">◉ 🎧 🤡 ◉</p>
+                </div>
+                <p id="studioMove" class="studio-move">Ready for your spotlight?</p>
+                <p id="studioProgress">Move 0 / 18</p>
+                <div class="dance-floor" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <p id="studioMessage" class="game-message" role="status">Select Start the Show to play your earned routine.</p>
+            <p id="audioMessage">Original synthesized percussion · 90 beats per minute.</p>
+            <div class="studio-controls">
+                <button type="button" id="studioStart">Start the Show</button>
+                <button type="button" id="studioPause" disabled>Pause</button>
+                <button type="button" id="studioStop">Stop</button>
+                <button type="button" id="studioReplay">Replay</button>
+                <button type="button" id="studioMute" aria-pressed="false">Mute</button>
+                <button type="button" id="studioLights" aria-pressed="false">Lights On</button>
+            </div>
+            <section id="customBuilder" aria-labelledby="customTitle" hidden>
+                <h3 id="customTitle">Create My Own Dance</h3>
+                <p>Add up to 32 moves. Repeated moves are welcome.</p>
+                <div id="choreographyActions" class="action-buttons">
+                    <button type="button" data-action="jump">🦘 Jump</button><button type="button" data-action="wave">👋 Wave</button>
+                    <button type="button" data-action="spin">🌀 Spin</button><button type="button" data-action="clap">👏 Clap</button>
+                </div>
+                <p id="customCount">0 / 32 moves</p>
+                <ol id="customSequence" class="custom-sequence"></ol>
+                <div class="studio-controls">
+                    <button type="button" id="customUndo">Undo Last Move</button><button type="button" id="customClear">Clear Routine</button>
+                    <button type="button" id="customPlay">Play My Dance</button><button type="button" id="customStop">Stop Playback</button>
+                    <button type="button" id="customSave">Save My Dance</button>
+                </div>
+            </section>
+        </section>
+        <div class="progress-settings">
+            <button type="button" id="resetProgress">Reset All Progress</button>
+            <p id="storageMessage" role="status">Progress is saved on this browser when storage is available.</p>
+        </div>
+        <footer>
+            <p>WEB 330 JavaScript Practice | Future Circus Arcade Template</p>
+        </footer>
+    </main>
+</body>
+</html>
