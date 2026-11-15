@@ -1,0 +1,263 @@
+/*
+Author: Leslie Brockman
+Practice 3: Discovery Cards
+Description: Styles for the interactive discovery cards. This will change depending on project. all of these are templates and learning reinforcement.
+*/
+
+:root {
+    --cream: #fff8e8;
+    --green: #287b65;
+    --pink: #f4a8c4;
+    --yellow: #ffdb79;
+    --blue: #a8dded;
+    --purple: #a78acb;
+    --ink: #29384a;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff1c5, #f9dbe9, #d6f2e6);
+    color: var(--ink);
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.page {
+    width: min(100% - 32px, 850px);
+    margin: 0 auto;
+    padding: 40px 0 24px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 12px 0;
+    color: var(--green);
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.page-header > p:last-child {
+    font-size: 1.1rem;
+}
+
+.discovery {
+    padding: 24px;
+    background: var(--cream);
+    border: 3px solid var(--white);
+    border-radius: 28px;
+    box-shadow: 0 10px 0 rgba(67, 79, 69, 0.12);
+}
+
+.card-counter {
+    margin-bottom: 16px;
+    color: var(--green);
+    font-weight: bold;
+    text-align: center;
+}
+
+.discovery-card {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    min-height: 300px;
+    overflow: hidden;
+    background: var(--white);
+    border: 3px solid var(--green);
+    border-radius: 22px;
+    box-shadow: 0 6px 0 rgba(40, 123, 101, 0.16);
+}
+
+.card-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    background: var(--yellow);
+    font-size: clamp(5rem, 12vw, 8rem);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+    padding: 30px;
+}
+
+.card-category {
+    margin: 0;
+    padding: 7px 14px;
+    background: var(--blue);
+    border-radius: 30px;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.card-content h2 {
+    margin: 0;
+    color: var(--green);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.card-description {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.card-link {
+    display: inline-block;
+    padding: 12px 18px;
+    background: var(--green);
+    border-radius: 12px;
+    color: var(--white);
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.card-link:hover {
+    background: #195b49;
+    transform: translateY(-2px);
+}
+
+.card-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.card-controls button {
+    padding: 12px 18px;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    background: var(--blue);
+    color: var(--ink);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(41, 56, 74, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(41, 56, 74, 0.2);
+}
+
+.card-controls button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(41, 56, 74, 0.2);
+}
+
+.card-controls .surprise-btn {
+    background: var(--pink);
+}
+
+.card-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.card-dots button {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #b7c7c0;
+    cursor: pointer;
+}
+
+.card-dots button.active {
+    background: var(--green);
+    transform: scale(1.3);
+}
+
+.status-message {
+    margin: 22px 0 0;
+    color: var(--green);
+    font-weight: bold;
+    text-align: center;
+}
+
+.page-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--purple);
+    outline-offset: 4px;
+}
+
+@media (max-width: 650px) {
+    .page {
+        width: min(100% - 20px, 850px);
+        padding-top: 24px;
+    }
+
+    .discovery {
+        padding: 14px;
+        border-radius: 20px;
+    }
+
+    .discovery-card {
+        grid-template-columns: 1fr;
+    }
+
+    .card-art {
+        min-height: 160px;
+        font-size: 5rem;
+    }
+
+    .card-content {
+        align-items: center;
+        padding: 22px 18px;
+        text-align: center;
+    }
+
+    .card-controls {
+        gap: 8px;
+    }
+
+    .card-controls button {
+        flex: 1 1 130px;
+        padding: 12px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
