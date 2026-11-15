@@ -1,0 +1,277 @@
+/* Practice 6: Professor David's compact conversion exhibit. 
+author: Leslie  Brockman */
+
+/* WEB 330 | Week 4 | Practice 6
+   Circus Memory Match */
+:root {
+    --red: #b82939;
+    --dark-red: #751b2c;
+    --gold: #f1c75b;
+    --cream: #fff4d8;
+    --navy: #18253c;
+    --green: #277b62;
+    --pink: #f4b5bd;
+    --white: #ffffff;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: repeating-linear-gradient(90deg, #871e32 0 85px, #ad2e40 85px 170px);
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+}
+button {
+    font: inherit;
+    cursor: pointer;
+}
+.circus {
+    width: min(100% - 24px, 960px);
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--cream);
+    border: 8px solid var(--gold);
+    border-radius: 30px;
+    box-shadow: 0 15px 45px #210a19a6;
+}
+.circus-header {
+    padding: 30px 20px;
+    border-radius: 20px 20px 8px 8px;
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+}
+.eyebrow {
+    color: var(--gold);
+    font: bold 0.75rem Arial, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+h1 {
+    margin: 12px 0;
+    color: var(--gold);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-shadow: 3px 3px var(--dark-red);
+}
+.subtitle {
+    color: var(--pink);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.game {
+    padding: 25px 15px;
+    text-align: center;
+}
+.game-heading h2 {
+    color: var(--dark-red);
+    font-size: 1.8rem;
+}
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 600px;
+    margin: 25px auto;
+}
+.score {
+    padding: 15px 8px;
+    border: 3px solid var(--gold);
+    border-radius: 14px;
+    background: var(--navy);
+    color: var(--cream);
+    box-shadow: 0 5px 0 var(--dark-red);
+}
+.score-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font: bold 0.8rem Arial, sans-serif;
+    text-transform: uppercase;
+}
+.score strong {
+    font-size: 1.6rem;
+}
+.game-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+.game-controls button,
+.victory button {
+    padding: 13px 22px;
+    border: 3px solid var(--navy);
+    border-radius: 12px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: bold;
+    box-shadow: 0 5px 0 var(--dark-red);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.game-controls button:hover,
+.victory button:hover {
+    transform: translateY(-3px);
+}
+.game-controls button:active,
+.victory button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--dark-red);
+}
+.game-message {
+    min-height: 24px;
+    color: var(--dark-red);
+    font-weight: bold;
+}
+.memory-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 660px;
+    margin: 25px auto;
+    padding: 18px;
+    border: 6px double var(--gold);
+    border-radius: 18px;
+    background: var(--navy);
+    min-height: 180px;
+}
+.memory-card {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    padding: 0;
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    background: transparent;
+    perspective: 800px;
+    cursor: pointer;
+}
+.card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+.memory-card.is-flipped .card-inner,
+.memory-card.is-matched .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    backface-visibility: hidden;
+}
+.card-front {
+    background: repeating-linear-gradient(45deg, var(--red) 0 14px, var(--dark-red) 14px 28px);
+    color: var(--gold);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+.card-back {
+    background: var(--cream);
+    color: var(--navy);
+    transform: rotateY(180deg);
+}
+.card-symbol {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+.card-name {
+    font: bold 0.8rem Arial, sans-serif;
+    text-align: center;
+}
+.memory-card.is-matched {
+    border-color: #8ce0b7;
+    box-shadow: 0 0 15px #8ce0b799;
+}
+.memory-card:disabled {
+    cursor: default;
+}
+.game-instructions {
+    max-width: 660px;
+    margin: 30px auto;
+    padding: 18px;
+    border: 3px dashed var(--gold);
+    border-radius: 16px;
+    background: #fff9eb;
+}
+.game-instructions h3 {
+    margin-top: 0;
+    color: var(--dark-red);
+}
+.victory {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 28px;
+    border: 5px double var(--gold);
+    border-radius: 18px;
+    background: var(--green);
+    color: var(--white);
+}
+.victory[hidden] {
+    display: none;
+}
+.victory h2 {
+    color: var(--gold);
+    font-size: 2rem;
+}
+.victory-stars {
+    font-size: 2.5rem;
+}
+.circus-footer {
+    padding: 20px;
+    border-top: 5px double var(--gold);
+    text-align: center;
+    font-size: 0.85rem;
+}
+button:focus-visible {
+    outline: 4px solid #55c8e6;
+    outline-offset: 4px;
+}
+@media (max-width: 600px) {
+    .circus {
+        width: calc(100% - 12px);
+        margin: 6px auto;
+        padding: 8px;
+        border-width: 4px;
+    }
+    .circus-header {
+        padding: 22px 12px;
+    }
+    .game {
+        padding: 15px 4px;
+    }
+    .memory-board {
+        gap: 7px;
+        padding: 8px;
+        border-width: 3px;
+    }
+    .memory-card {
+        border-width: 2px;
+    }
+    .card-name {
+        font-size: 0.6rem;
+    }
+    .scoreboard {
+        gap: 6px;
+    }
+    .score strong {
+        font-size: 1.2rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
