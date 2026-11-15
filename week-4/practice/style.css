@@ -1,0 +1,42 @@
+/* WEB 330 Practice: Shape Explorers
+ <!--
+      JavaScript 7th Edition
+      Chapter 10
+      Hands-on Project 10-2
+
+      Author: Leslie Brockman
+      Date: 11-14-2026  
+      Description: Shape Explorers CSS Styles
+   --> */
+:root{font-family:ui-rounded,"Trebuchet MS",Arial,sans-serif;color:#283c50;background:#f8f3e9}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 15% 10%,#fff1c9,transparent 32%),radial-gradient(circle at 90% 65%,#e3f5ee,transparent 38%),#f8f3e9}
+.game-shell{max-width:1000px;margin:auto;padding:22px}
+.hero{text-align:center;padding:20px 12px}
+.eyebrow{letter-spacing:.16em;font-size:.75rem;font-weight:bold;color:#378c77}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);margin:8px 0;color:#d96860;text-shadow:2px 3px #ffe0a2}
+.hero h1 span{color:#efb748}
+.hero p{margin:8px 0}
+.arabic{font-family:Tahoma,Arial,sans-serif}
+.toolbar,.board-panel,.tray-panel{background:#fffdf7;border:3px solid #e5dfcc;border-radius:25px;box-shadow:0 7px 0 #e9dfca;padding:18px;margin-bottom:22px}
+.toolbar,.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h2{font-size:1.2rem;margin:0;color:#3d8276}
+.section-heading>span{color:#8c669d;font-weight:bold}
+button{border:0;border-radius:14px;background:#a5e0d3;color:#283c50;font-weight:bold;padding:12px 15px;cursor:pointer;box-shadow:0 4px 0 #69b2a0}
+button:focus-visible{outline:3px solid #397dc6;outline-offset:4px}
+.puzzle-board,.piece-tray{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:14px}
+.puzzle-board{border:3px dashed #b8cbbf;border-radius:18px;background:#f4f8f1}
+.target-slot,.tray-slot{position:relative;min-width:0;height:145px}
+.target-slot{display:grid;place-items:center}
+.target-outline{width:var(--shape-size);height:var(--shape-size);pointer-events:none}
+.target-outline polygon{fill:#b9c9d422;stroke:#6c90a788;stroke-width:1.5;stroke-dasharray:4 4;stroke-linejoin:round}
+.piece{position:absolute;left:50%;top:50%;width:var(--shape-size);height:var(--shape-size);transform:translate(-50%,-50%);cursor:grab;touch-action:none;user-select:none;background:none;border:0;padding:0}
+.piece svg{display:block;width:100%;height:100%;background:none;filter:drop-shadow(2px 3px 2px #0002)}
+.piece svg,.piece svg *{pointer-events:none}
+.piece polygon{stroke:#ffffff80;stroke-width:1;stroke-linejoin:round}
+.piece.dragging{position:fixed;z-index:10000;cursor:grabbing}
+.piece[data-locked="true"]{cursor:default}
+.tray-slot .piece{top:52px}
+.tray-slot p{position:absolute;top:104px;left:0;right:0;margin:0;text-align:center;font-size:.75rem;font-weight:bold;pointer-events:none}
+.tray-slot p span{display:block;margin-top:4px;font-family:Tahoma,Arial,sans-serif}
+@media(max-width:650px){.game-shell{padding:12px}.board-panel,.tray-panel{padding:12px}.puzzle-board,.piece-tray{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:8px}}
