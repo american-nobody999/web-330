@@ -1,0 +1,649 @@
+/*
+  Pragmatic JavaScript
+  Chapter 2
+  Programming Assignment
+
+  Author: Leslie Brockman
+  Date: 11-21-2026
+  Filename: styles.css
+  Description: Styles for the restaurant reservation system. Steampunk-inspired design elements. Clocks, gears and metallic textures are used throughout. Pallet 3: Walnut, Brass, Copper, Emerald, Burgundy, Cream, Muted Cream, Dark Metal, Parchment design scheme.
+*/
+
+:root {
+  --walnut: #241a16;
+  --brass: #c5a15a;
+  --copper: #b87333;
+  --emerald: #173d32;
+  --burgundy: #602c36;
+  --cream: #f2e4c8;
+  --muted-cream: #cdbd9d;
+  --dark-metal: #17110e;
+  --parchment: #ead7ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(184, 115, 51, 0.12), transparent 28rem),
+    repeating-linear-gradient(102deg, transparent 0 17px, rgba(0, 0, 0, 0.14) 18px 20px, transparent 21px 48px),
+    repeating-linear-gradient(12deg, transparent 0 69px, rgba(197, 161, 90, 0.04) 70px 72px),
+    var(--walnut);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.5;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  opacity: 0.2;
+  background:
+    linear-gradient(45deg, transparent 47%, rgba(197, 161, 90, 0.1) 48% 49%, transparent 50%) 0 0 / 42px 42px,
+    linear-gradient(-45deg, transparent 47%, rgba(197, 161, 90, 0.08) 48% 49%, transparent 50%) 0 0 / 42px 42px;
+}
+
+body::after {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0.75rem;
+  z-index: -1;
+  width: 3px;
+  content: "";
+  pointer-events: none;
+  border-right: 1px solid rgba(184, 115, 51, 0.35);
+  border-left: 1px solid rgba(197, 161, 90, 0.18);
+  box-shadow: 0 0 0 5px rgba(36, 26, 22, 0.35), 0 0 15px rgba(184, 115, 51, 0.16);
+}
+
+.site-header {
+  position: relative;
+  isolation: isolate;
+  padding: 3.5rem 1.5rem 3rem;
+  overflow: hidden;
+  text-align: center;
+  border-top: 3px solid var(--copper);
+  border-bottom: 4px solid var(--brass);
+  background:
+    linear-gradient(90deg, transparent 4%, rgba(184, 115, 51, 0.18) 4.2% 4.5%, transparent 4.7% 95.3%, rgba(184, 115, 51, 0.18) 95.5% 95.8%, transparent 96%),
+    linear-gradient(135deg, #302019, var(--walnut) 55%, #3b251a);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), inset 0 -7px 0 rgba(0, 0, 0, 0.28);
+}
+
+.eyebrow,
+.section-marker,
+footer {
+  color: var(--brass);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.35rem;
+  color: var(--cream);
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 0 #120d0b, 0 0 18px rgba(197, 161, 90, 0.18);
+}
+
+h1 span {
+  color: var(--brass);
+  font-style: italic;
+}
+
+.tagline {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  color: var(--muted-cream);
+  font-style: italic;
+}
+
+.gear {
+  position: absolute;
+  z-index: 0;
+  border: 8px solid var(--copper);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #f0d48b 0 4%, transparent 5%),
+    radial-gradient(circle, #9d7139 0 15%, var(--dark-metal) 16% 25%, #d2ae63 26% 31%, #704522 32% 61%, #c08a42 62% 69%, #3a2518 70%);
+  box-shadow: 0 5px 0 #120d0b, 0 0 18px rgba(197, 161, 90, 0.35), inset 0 0 0 5px rgba(36, 26, 22, 0.65);
+  opacity: 0.8;
+  animation: gear-turn 32s linear infinite;
+}
+
+.gear::before {
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 2deg, var(--copper) 0 8deg, transparent 8deg 18deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 61%, #000 62%);
+  mask: radial-gradient(circle, transparent 0 61%, #000 62%);
+  filter: drop-shadow(0 3px 1px #120d0b);
+}
+
+.gear::after {
+  position: absolute;
+  inset: 38%;
+  content: "";
+  pointer-events: none;
+  border: 3px solid var(--brass);
+  border-radius: 50%;
+  background: var(--dark-metal);
+  box-shadow: 0 0 0 4px #6f4726, inset 0 0 0 3px #0e0a08;
+}
+
+.gear-large {
+  top: -60px;
+  left: 7%;
+  width: 150px;
+  height: 150px;
+}
+
+.gear-medium {
+  top: 74px;
+  left: 16%;
+  width: 84px;
+  height: 84px;
+  border-width: 5px;
+  animation-direction: reverse;
+  animation-duration: 27s;
+}
+
+.gear-small {
+  right: 12%;
+  bottom: -38px;
+  width: 98px;
+  height: 98px;
+  border-width: 6px;
+  animation-direction: reverse;
+  animation-duration: 23s;
+}
+/* Spins the wheels of the gears */
+
+@keyframes gear-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cafe-shell {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.intro-panel,
+.status-panel,
+.confirmation-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem;
+  border: 2px solid var(--copper);
+  outline: 1px solid var(--brass);
+  outline-offset: -8px;
+  background:
+    linear-gradient(135deg, transparent 14px, rgba(197, 161, 90, 0.13) 15px, transparent 17px) 0 0 / 31px 31px,
+    linear-gradient(145deg, #33231b, #1d1512);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38), inset 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+.intro-panel::before,
+.status-panel::before,
+.confirmation-panel::before {
+  position: absolute;
+  inset: 7px;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0 0, var(--brass) 0 3px, transparent 4px),
+    radial-gradient(circle at 100% 0, var(--brass) 0 3px, transparent 4px),
+    radial-gradient(circle at 0 100%, var(--brass) 0 3px, transparent 4px),
+    radial-gradient(circle at 100% 100%, var(--brass) 0 3px, transparent 4px);
+}
+
+.intro-panel::after {
+  position: absolute;
+  top: 1rem;
+  right: 1.3rem;
+  width: 58px;
+  height: 58px;
+  content: "";
+  pointer-events: none;
+  border: 4px solid var(--brass);
+  border-radius: 50%;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle, var(--dark-metal) 0 5px, var(--copper) 6px 9px, transparent 10px),
+    repeating-conic-gradient(var(--brass) 0 4deg, transparent 4deg 25deg);
+  box-shadow: 0 0 0 4px var(--dark-metal), inset 0 0 0 3px #765129;
+}
+
+.status-panel::after {
+  position: absolute;
+  inset: 14px;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(184, 115, 51, 0.52);
+  border-left: 0;
+  border-bottom: 0;
+  box-shadow: 6px -6px 0 rgba(197, 161, 90, 0.08);
+}
+
+.intro-panel > *,
+.status-panel > *,
+.confirmation-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-panel h2,
+.status-panel h2,
+.confirmation-panel h2 {
+  margin-bottom: 0.65rem;
+  color: var(--brass);
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.intro-panel > p:not(.section-marker) {
+  color: var(--muted-cream);
+}
+
+.section-marker {
+  position: relative;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(197, 161, 90, 0.5);
+  text-shadow: 1px 1px 0 #120d0b;
+}
+
+.section-marker::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 38px;
+  height: 7px;
+  content: "";
+  pointer-events: none;
+  border: 1px solid var(--copper);
+  border-radius: 50%;
+  background: var(--walnut);
+}
+
+.form-field {
+  margin-top: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--cream);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  text-shadow: 1px 1px 0 #090706;
+}
+
+input,
+select,
+button,
+input[type="submit"] {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--copper);
+  border-radius: 2px;
+  font: inherit;
+}
+
+input,
+select {
+  color: var(--cream);
+  border-color: #9d7139;
+  background:
+    linear-gradient(90deg, rgba(197, 161, 90, 0.08), transparent 12%, transparent 88%, rgba(197, 161, 90, 0.08)),
+    #17110e;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(242, 228, 200, 0.16);
+}
+
+button,
+input[type="submit"] {
+  margin-top: 1.4rem;
+  border: 2px solid #8e632e;
+  border-radius: 3px;
+  color: var(--walnut);
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  background: linear-gradient(#e0c47b 0 12%, var(--brass) 13% 72%, #8f6835);
+  box-shadow: 0 4px 0 #4a2d18, 0 7px 12px rgba(0, 0, 0, 0.45), inset 0 1px 0 #f4dda0;
+  text-shadow: 0 1px 0 rgba(242, 228, 200, 0.4);
+}
+
+button:hover,
+button:focus-visible,
+input[type="submit"]:hover,
+input[type="submit"]:focus-visible {
+  background: linear-gradient(#f2d995, var(--brass));
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #4a2d18, 0 3px 7px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(74, 45, 24, 0.45);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+input[type="submit"]:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: 2px;
+}
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.table-indicator {
+  display: flex;
+  position: relative;
+  min-height: 6.4rem;
+  padding: 0.75rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--brass);
+  border-radius: 18px;
+  color: var(--cream);
+  background:
+    linear-gradient(135deg, rgba(242, 228, 200, 0.16), transparent 22%),
+    radial-gradient(circle at 50% 30%, #2f765c, var(--emerald) 67%, #0c251e);
+  box-shadow:
+    inset 0 0 0 4px #5e3c22,
+    inset 0 0 0 6px rgba(242, 228, 200, 0.12),
+    0 5px 0 #120d0b,
+    0 9px 14px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.table-indicator::before {
+  display: none;
+}
+
+.table-indicator.reserved {
+  color: #f2d6c0;
+  background:
+    linear-gradient(135deg, rgba(242, 228, 200, 0.12), transparent 22%),
+    radial-gradient(circle at 50% 30%, #8e4a53, var(--burgundy) 67%, #34161d);
+}
+
+.table-indicator.seated {
+  color: #e6c77e;
+  background:
+    linear-gradient(135deg, rgba(242, 228, 200, 0.18), transparent 22%),
+    radial-gradient(circle at 50% 30%, #a8844a, #66502d 67%, #342517);
+}
+
+.table-number {
+  font-size: 1.5rem;
+}
+
+.table-status {
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(36, 26, 22, 0.85);
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  color: var(--muted-cream);
+  font-size: 0.85rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-right: 0.25rem;
+  border-radius: 50%;
+}
+
+.available-dot {
+  background: var(--emerald);
+}
+
+.reserved-dot {
+  background: var(--burgundy);
+}
+
+.seated-dot {
+  background: #806538;
+}
+
+.confirmation-panel {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+#message {
+  min-height: 2rem;
+  margin-bottom: 0;
+  color: var(--muted-cream);
+  font-style: italic;
+}
+
+#message.success {
+  color: #a7d6a8;
+}
+
+#message.error {
+  color: #e4a4a4;
+}
+
+.reservations-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.reservation-entry {
+  display: grid;
+  position: relative;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #a87a3d;
+  border-left: 7px solid var(--copper);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.17), transparent 18%),
+    repeating-linear-gradient(0deg, transparent 0 22px, rgba(111, 86, 56, 0.1) 23px 24px),
+    var(--parchment);
+  box-shadow: 0 4px 0 #4a2d18, 0 8px 14px rgba(0, 0, 0, 0.32);
+  color: var(--walnut);
+}
+
+.reservation-entry::before,
+.reservation-entry::after {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  content: "";
+  pointer-events: none;
+  border: 1px solid #805926;
+  border-radius: 50%;
+  background: var(--brass);
+  box-shadow: inset 1px 1px 2px #f4dda0;
+}
+
+.reservation-entry::before {
+  top: 7px;
+  right: 7px;
+}
+
+.reservation-entry::after {
+  bottom: 7px;
+  left: 7px;
+}
+
+.reservation-details {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.reservation-details strong {
+  color: var(--walnut);
+  font-size: 1.1rem;
+}
+
+.reservation-details span {
+  color: #5d4430;
+  font-size: 0.85rem;
+}
+
+.reservation-status {
+  color: var(--emerald);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reservation-status.seated {
+  color: #e6c77e;
+}
+
+.seat-button {
+  width: auto;
+  min-width: 7rem;
+  margin-top: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+footer {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  justify-content: space-between;
+  border-top: 1px solid #6f5638;
+}
+/* Responsive design for smaller screens, tablet and mobile devices */
+
+@media (max-width: 700px) {
+  .cafe-shell {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem;
+  }
+
+  .confirmation-panel {
+    grid-column: auto;
+  }
+
+  .reservation-entry {
+    grid-template-columns: 1fr auto;
+  }
+
+  .reservation-status {
+    grid-column: 1;
+  }
+
+  .seat-button {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .gear-large {
+    top: -36px;
+    left: -38px;
+    width: 105px;
+    height: 105px;
+  }
+
+  .gear-medium {
+    top: 92px;
+    left: -6px;
+    width: 62px;
+    height: 62px;
+    border-width: 4px;
+  }
+
+  .gear-small {
+    right: -22px;
+    bottom: -28px;
+    width: 74px;
+    height: 74px;
+  }
+
+  .intro-panel::after {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gear {
+    animation: none;
+  }
+}
