@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+      Pragmatic JavaScript
+      Chapter 2
+      Programming Assignment
+
+      Author:Leslie Brockman
+      Date:11-21-2026
+      Filename: index.html
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Clockwork Café | Reservations</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="gear gear-large" aria-hidden="true"></div>
+      <div class="gear gear-medium" aria-hidden="true"></div>
+      <p class="eyebrow">Reservations by Appointment &amp; Apparatus</p>
+      <h1>The Clockwork <span>Café</span></h1>
+      <p class="tagline">Where every gathering runs like clockwork.</p>
+      <div class="gear gear-small" aria-hidden="true"></div>
+    </header>
+
+    <main class="cafe-shell">
+      <section class="intro-panel" aria-labelledby="reservation-heading">
+        <p class="section-marker">Secure your station</p>
+        <h2 id="reservation-heading">Reserve a table</h2>
+        <p>
+          Select an available table and let our reservation apparatus prepare
+          your place.
+        </p>
+
+        <!--Reservation form-->
+        <form id="reservationForm">
+          <div class="form-field">
+            <label for="name">Guest name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-field">
+            <label for="tableNumber">Table number</label>
+            <input
+              type="number"
+              id="tableNumber"
+              name="tableNumber"
+              min="1"
+              step="1"
+              required
+            />
+          </div>
+          <input type="submit" value="Reserve Table" />
+        </form>
+      </section>
+
+<!--Table status section-->
+      <section class="status-panel" aria-labelledby="status-heading">
+        <p class="section-marker">Apparatus status</p>
+        <h2 id="status-heading">The dining room</h2>
+        <div class="table-grid">
+          <div class="table-indicator available" data-table="1">
+            <span class="table-number">01</span><span class="table-status">Available</span>
+          </div>
+          <div class="table-indicator available" data-table="2">
+            <span class="table-number">02</span><span class="table-status">Available</span>
+          </div>
+          <div class="table-indicator available" data-table="3">
+            <span class="table-number">03</span><span class="table-status">Available</span>
+          </div>
+          <div class="table-indicator available" data-table="4">
+            <span class="table-number">04</span><span class="table-status">Available</span>
+          </div>
+          <div class="table-indicator available" data-table="5">
+            <span class="table-number">05</span><span class="table-status">Available</span>
+          </div>
+          <div class="table-indicator available" data-table="6">
+            <span class="table-number">06</span><span class="table-status">Available</span>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i class="legend-dot available-dot"></i> Available</span>
+          <span><i class="legend-dot reserved-dot"></i> Reserved</span>
+          <span><i class="legend-dot seated-dot"></i> Seated</span>
+        </div>
+      </section>
+
+      <!--Confirmation panel-->
+      <section class="confirmation-panel" aria-labelledby="confirmation-heading">
+        <p class="section-marker">Confirmation display</p>
+        <h2 id="confirmation-heading">Reservation ledger</h2>
+        <p id="message" aria-live="polite">Awaiting your appointment details.</p>
+        <ul id="reservationsList" class="reservations-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <span>The Clockwork Café</span>
+      <span>Est. 1897 &middot; Open by appointment</span>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
